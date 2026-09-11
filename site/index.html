@@ -79,11 +79,11 @@ nav{
 }
 .nav-in{display:flex; align-items:center; justify-content:space-between; height:66px;}
 .brand{display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700;}
-.brand .navlogo{width:40px; height:40px; display:block; filter:drop-shadow(0 6px 18px rgba(201,154,58,.28));}
+.brand .navlogo{width:42px; height:42px; display:block; object-fit:contain; filter:drop-shadow(0 6px 18px rgba(22,40,74,.25));}
 .brand b{font-weight:700;} .brand i{color:var(--gold2); font-style:italic;}
 /* logo hero */
 .logo-hero{display:inline-flex; flex-direction:column; align-items:center; gap:16px; margin-bottom:8px;}
-.logo-hero .herologo{width:118px; height:118px; display:block; filter:drop-shadow(0 20px 55px rgba(201,154,58,.32));}
+.logo-hero .herologo{width:min(360px,72vw); height:auto; display:block; filter:drop-shadow(0 20px 55px rgba(22,40,74,.28));}
 .logo-hero .word{font-family:'Cormorant Garamond',serif; font-size:27px; line-height:1; letter-spacing:.5px;}
 .logo-hero .word .m{color:#f5f1e8;} .logo-hero .word .a{color:var(--gold2);}
 .nav-links{display:flex; align-items:center; gap:28px; font-size:14px;}
@@ -364,7 +364,7 @@ nav.scrolled .nav-in{height:56px;}
 
 <nav>
   <div class="wrap nav-in">
-    <a class="brand" href="#top"><img class="navlogo" src="logo-ma.png" alt="Mentoring Agenta"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
+    <a class="brand" href="#top"><img class="navlogo" src="logo-ma-mark.png" alt="MA"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
     <div class="nav-links">
       <a class="link" href="#app">Aplikacja</a>
       <a class="link" href="#mechanizm">Jak działa</a>
@@ -384,8 +384,7 @@ nav.scrolled .nav-in{height:56px;}
 <header class="hero">
   <div class="wrap">
     <div class="logo-hero reveal">
-      <img class="herologo" src="logo-ma.png" alt="Mentoring Agenta">
-      <div class="word"><span class="m">Mentoring</span> <span class="a">Agenta</span></div>
+      <img class="herologo" src="logo-ma.png" alt="Mentoring Agenta — System Operacyjny Agenta">
     </div>
     <div class="eyebrow reveal" style="margin-top:26px">AgentOS · Pierwszy system operacyjny dla agenta nieruchomości</div>
     <h1 class="reveal">Każdego ranka mówi Ci<br><em>co zrobić.</em> Zanim Ty pomyślisz.</h1>
@@ -747,7 +746,7 @@ nav.scrolled .nav-in{height:56px;}
 <footer>
   <div class="wrap">
     <div class="foot-in">
-      <a class="brand" href="#top"><img class="navlogo" src="logo-ma.png" alt="Mentoring Agenta"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
+      <a class="brand" href="#top"><img class="navlogo" src="logo-ma-mark.png" alt="MA"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
       <div class="foot-links">
         <a href="https://www.mentoringagenta.pl/mentoring.html">Mentoring 1:1</a>
         <a href="https://sklepheksagon.pl/produkt/ksiazka-mentoring-agenta-marcin/">Książka</a>
@@ -1060,35 +1059,35 @@ body{background:#f3f4f6 !important;color:#111827 !important;font-family:Inter,-a
 nav{position:fixed;top:0;left:0;right:0;z-index:900;background:#ffffff;border-bottom:1px solid #e5e7eb !important;height:56px;backdrop-filter:none !important;}
 .nav-in{max-width:1280px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
 .brand span{color:#111827 !important;font-weight:800;}
-.brand i{color:#2563eb !important;font-style:normal;}
+.brand i{color:#16284a !important;font-style:normal;}
 .navlogo{width:30px;height:30px;}
 .nav-links .link{color:#374151 !important;font-size:13.5px;font-weight:600;padding:6px 10px;border-radius:8px;}
-.nav-links .link:hover{background:#f3f4f6;color:#2563eb !important;}
-.nav-links .btn.sm{background:#2563eb !important;color:#fff !important;border:none;border-radius:9px;padding:9px 16px;font-weight:700;}
+.nav-links .link:hover{background:#f3f4f6;color:#16284a !important;}
+.nav-links .btn.sm{background:#16284a !important;color:#fff !important;border:none;border-radius:9px;padding:9px 16px;font-weight:700;}
 /* HERO = jasny, duży tytuł czarny, akcent niebieski */
 .hero{background:#f3f4f6 !important;padding:120px 20px 60px !important;}
 .hero h1{color:#111827 !important;}
-.hero h1 em{color:#2563eb !important;font-style:normal;}
+.hero h1 em{color:#16284a !important;font-style:normal;}
 .hero .sub{color:#374151 !important;}
-.hero .eyebrow{color:#2563eb !important;letter-spacing:.1em;}
+.hero .eyebrow{color:#16284a !important;letter-spacing:.1em;}
 /* SEKCJE: jasne, karty białe */
 section{background:#f3f4f6 !important;color:#111827 !important;}
 section:nth-of-type(even){background:#e9ecef !important;}
-.sec-head .eyebrow{color:#2563eb !important;}
+.sec-head .eyebrow{color:#16284a !important;}
 h1,h2,h3{color:#111827 !important;}
-h2 em{color:#2563eb !important;font-style:normal;}
+h2 em{color:#16284a !important;font-style:normal;}
 .card{background:#ffffff !important;border:1px solid #e5e7eb !important;box-shadow:0 1px 3px rgba(0,0,0,.06) !important;color:#111827 !important;}
 .card h3{color:#111827 !important;}
 .card p{color:#374151 !important;}
 .mut{color:#6b7280 !important;}
 b, strong{color:#111827 !important;}
 /* przyciski */
-.btn{background:#2563eb !important;color:#fff !important;border-radius:11px !important;font-weight:700 !important;border:none !important;box-shadow:0 4px 14px rgba(37,99,235,.25) !important;}
-.btn:hover{background:#1d4ed8 !important;}
+.btn{background:#16284a !important;color:#fff !important;border-radius:11px !important;font-weight:700 !important;border:none !important;box-shadow:0 4px 14px rgba(37,99,235,.25) !important;}
+.btn:hover{background:#0f1c38 !important;}
 .btn.sm{padding:8px 14px !important;}
 .btn-sec, .btn.ghost, .btn.outline{background:#fff !important;color:#111827 !important;border:1px solid #e5e7eb !important;box-shadow:none !important;}
 /* gold → niebieski */
-:root{--gold:#2563eb !important;--gold2:#2563eb !important;--txt:#111827 !important;--mut:#6b7280 !important;}
+:root{--gold:#16284a !important;--gold2:#16284a !important;--txt:#111827 !important;--mut:#6b7280 !important;}
 /* timeline, stats, feat */
 .timeline .step, .feat, .stat-card{background:#ffffff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
 .feat b{color:#111827 !important;}
@@ -1099,14 +1098,14 @@ b, strong{color:#111827 !important;}
 .shot figcaption b{color:#111827 !important;}
 .shot figcaption span{color:#6b7280 !important;}
 /* ceny / badge'e */
-.badge{background:#2563eb !important;color:#fff !important;}
+.badge{background:#16284a !important;color:#fff !important;}
 /* FAQ / tabela */
 .faq-item, table, th, td{background:#ffffff !important;color:#111827 !important;border-color:#e5e7eb !important;}
 th{color:#6b7280 !important;}
 /* footer */
 footer{background:#111827 !important;color:#e5e7eb !important;}
 /* progress bar */
-#progress{background:#2563eb !important;}
+#progress{background:#16284a !important;}
 /* cena przekreślona */
 .price-old{color:#9ca3af !important;}
 /* form / inputy (jeśli są) */

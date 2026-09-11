@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamów dostęp — Mentoring Agenta</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9922a;--gold2:#e8b84b;--gold3:rgba(201,146,42,.12);--gold4:rgba(201,146,42,.06);
+  --dark:#08080d;--dark2:#0f0f18;--dark3:#161622;--dark4:#1c1c28;
+  --card:#111118;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.18);
+  --text:#f5f2ed;--text2:#c8c8dc;--text3:#8888a0;--green:#3db87a;--blue:#4a8fd4;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(8,8,13,.9);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--text);text-decoration:none}.logo span{color:var(--gold)}
+.nav-back{font-size:13px;color:var(--text2);text-decoration:none;transition:color .2s}.nav-back:hover{color:var(--gold)}
+@media(max-width:600px){nav{padding:14px 20px}}
+.page{position:relative;z-index:1;padding-top:80px;padding-bottom:80px}
+.hero{text-align:center;padding:56px 24px 36px;max-width:680px;margin:0 auto}
+.hero-eye{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:.95rem;color:var(--text2);line-height:1.75;font-weight:300;max-width:520px;margin:0 auto}
+.hero-meta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.hero-meta-item{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2)}
+.hero-meta-dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* --- aplikacja card --- */
+.app-wrap{max-width:640px;margin:0 auto;padding:0 24px 32px}
+.app-card{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden}
+.app-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(201,146,42,.07),transparent 60%);pointer-events:none}
+.app-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.app-name{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1.15;margin-bottom:8px}
+.app-price{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.app-price-sub{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text3);margin:5px 0 20px}
+.app-feats{list-style:none;display:flex;flex-direction:column;gap:9px}
+.app-feats li{font-size:.85rem;color:var(--text2);display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.app-feats li .ic{flex-shrink:0;margin-top:1px;color:var(--green)}
+.app-feats li.bonus .ic{color:var(--gold)}
+.app-feats li strong{color:var(--text);font-weight:500}
+
+/* --- form --- */
+.form-wrap{max-width:640px;margin:0 auto;padding:0 24px}
+.fcard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:36px 32px}
+@media(max-width:480px){.fcard{padding:24px 18px}}
+.fsec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.fsec::after{content:'';flex:1;height:1px;background:var(--border2)}
+.fsec:first-child{margin-top:0}
+.fg{margin-bottom:11px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:11px}
+@media(max-width:480px){.fr{grid-template-columns:1fr}}
+label.lbl{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:6px}
+label.lbl .r{color:var(--gold);margin-left:2px}
+input[type=text],input[type=email],input[type=tel],input[type=datetime-local],textarea,select{width:100%;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;font-size:.88rem;color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;transition:border-color .2s;outline:none;-webkit-appearance:none;color-scheme:dark}
+input:focus,textarea:focus,select:focus{border-color:rgba(201,146,42,.6);background:var(--dark4)}
+input::placeholder,textarea::placeholder{color:var(--text3);font-size:.82rem}
+textarea{resize:vertical;min-height:72px;line-height:1.6}
+select option{background:var(--dark3)}
+.tbox{background:var(--dark3);border:1px solid rgba(201,146,42,.2);border-radius:10px;padding:18px;margin-bottom:4px}
+.thead{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.thead::before{content:'◈';font-size:.8rem}
+.trow{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;margin-bottom:10px}
+.trow:last-of-type{margin-bottom:0}
+.tn{width:28px;height:28px;border-radius:50%;background:var(--gold3);border:1px solid rgba(201,146,42,.35);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);flex-shrink:0}
+.thint{font-size:.72rem;color:var(--text3);margin-top:8px;line-height:1.5}
+.togrow{display:flex;background:var(--dark3);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.tog{flex:1;padding:9px;text-align:center;font-size:.75rem;font-family:'DM Sans',sans-serif;cursor:pointer;color:var(--text2);background:none;border:none;transition:all .2s}
+.tog.on{background:var(--gold3);color:var(--gold)}
+.cflds{display:none}.cflds.show{display:block}
+.ck{display:flex;align-items:flex-start;gap:9px;cursor:pointer;margin-bottom:8px}
+.ck input[type=checkbox]{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+.ck span{font-size:.8rem;color:var(--text);line-height:1.55}
+.ck a{color:var(--gold);text-decoration:none}
+.btn{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);border:none;border-radius:10px;padding:16px 24px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:all .2s;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 8px 32px rgba(201,146,42,.35)}
+.btn:active{transform:none}
+.notebox{display:flex;align-items:flex-start;gap:8px;background:rgba(201,146,42,.06);border:1px solid rgba(201,146,42,.18);border-radius:8px;padding:12px 14px;margin-top:14px}
+.ndot{width:5px;height:5px;min-width:5px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0}
+.ntxt{font-size:.75rem;color:var(--text2);line-height:1.65}
+.ntxt strong{color:var(--text);font-weight:500}
+
+/* bóle */
+.bwrap{background:var(--dark3);border:1px solid var(--border2);border-radius:10px;padding:16px;margin-bottom:4px}
+.bsub{font-size:.73rem;color:var(--text3);line-height:1.5;margin-bottom:12px}
+.bgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:480px){.bgrid{grid-template-columns:1fr}}
+.bi{display:flex;align-items:center;gap:8px;cursor:pointer;padding:7px 10px;border-radius:7px;border:1px solid var(--border2);background:none;transition:all .2s;font-size:.78rem;color:var(--text);line-height:1.35}
+.bi:hover{border-color:rgba(201,146,42,.35);background:var(--gold4);color:var(--text)}
+.bi input[type=checkbox]{width:14px;height:14px;min-width:14px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+.bi:has(input:checked){border-color:rgba(201,146,42,.5);background:var(--gold3);color:var(--gold)}
+
+/* zoom cta */
+.zoom-cta{max-width:640px;margin:20px auto 0;padding:0 24px}
+.zoom-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--dark3);border:1px solid var(--border2);border-radius:12px;padding:18px 22px;flex-wrap:wrap}
+.zoom-text{font-size:.83rem;color:var(--text);line-height:1.55;flex:1;min-width:200px}
+.zoom-label{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:4px}
+.zoom-btn{flex-shrink:0;background:#2563eb;color:#ffffff;border:none;font-size:.82rem;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap}
+.zoom-btn:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.4)}
+
+/* mentoring link */
+.mentor-link-footer{text-align:center;margin-top:20px;padding-bottom:8px}
+.mentor-link-footer a{font-size:.72rem;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--border2);padding-bottom:1px;transition:color .2s,border-color .2s}
+.mentor-link-footer a:hover{color:var(--gold2);border-color:var(--gold2)}
+
+/* TY */
+#ty{display:none}
+#ty.show{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:calc(100vh - 80px);justify-content:center;padding:48px 24px;position:relative;z-index:1}
+.ty-chk{width:72px;height:72px;border-radius:50%;background:rgba(61,184,122,.1);border:1px solid rgba(61,184,122,.3);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+#ty h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+#ty h2 em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ty-sub{font-size:.92rem;color:var(--text2);line-height:1.8;max-width:480px;margin-bottom:32px}
+.ty-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;width:100%;max-width:500px;text-align:left;margin-bottom:16px}
+.ty-clbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ty-row{display:flex;justify-content:space-between;padding:5px 0;font-size:.82rem;gap:16px}
+.ty-row .k{color:var(--text2)}.ty-row .v{color:var(--text);text-align:right}
+.ty-row.tot{border-top:1px solid var(--border);margin-top:8px;padding-top:12px}
+.ty-row.tot .k{color:var(--text);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.ty-row.tot .v{font-family:'Playfair Display',serif;font-size:1.4rem;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ty-terminy{width:100%;max-width:500px;background:rgba(201,146,42,.06);border:1px solid rgba(201,146,42,.2);border-radius:10px;padding:18px;text-align:left;margin-bottom:24px}
+.ty-thead{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ty-ti{display:flex;gap:10px;align-items:center;margin-bottom:8px;font-size:.82rem;color:var(--text2)}
+.ty-ti:last-child{margin-bottom:0}
+.ty-tnum{width:20px;height:20px;border-radius:50%;background:var(--gold3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--gold);flex-shrink:0}
+.ty-steps{width:100%;max-width:500px;text-align:left}
+.ty-sl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+.ty-step{display:flex;gap:12px;margin-bottom:11px}
+.ty-sn{width:22px;height:22px;min-width:22px;border-radius:50%;background:var(--dark3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--text3)}
+.ty-st{font-size:.82rem;color:var(--text2);line-height:1.55}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero>*{animation:up .6s ease both}
+.hero-eye{animation-delay:.05s}.hero h1{animation-delay:.1s}.hero p{animation-delay:.16s}.hero-meta{animation-delay:.2s}
+.app-wrap{animation:up .6s .18s ease both}.form-wrap{animation:up .6s .24s ease both}
+</style>
+
+<!-- Meta Pixel Code -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','553812340590667');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=553812340590667&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Mentoring <span>Agenta</span></a>
+  <a href="index.html" class="nav-back">← Wróć</a>
+</nav>
+<div class="page">
+<div id="main">
+  <div class="hero">
+    <p class="hero-eye">Zamów dostęp</p>
+    <h1>Twój system operacyjny<br><em>gotowy w 40 minut</em></h1>
+    <p>Wypełnij formularz — odezwiemy się w ciągu 24h, potwierdzimy termin krótkiej rozmowy i wyślemy fakturę. Zero płatności z góry.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div>52 moduły AI</div>
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div>Dostęp bezterminowy</div>
+      <div class="hero-meta-item"><div class="hero-meta-dot"></div>1 500 zł jednorazowo</div>
+    </div>
+  </div>
+
+  <!-- APLIKACJA CARD -->
+  <div class="app-wrap">
+    <div class="app-card">
+      <div class="app-tag">System operacyjny agenta</div>
+      <div class="app-name">Aplikacja<br>Mentoring Agenta</div>
+      <div class="app-price">1 500 zł</div>
+      <div class="app-price-sub">jednorazowo · dostęp bezterminowy · telefon i PC</div>
+      <ul class="app-feats">
+        <li><span class="ic">✦</span><span>52 moduły AI — generatory, kalkulatory, skrypty rozmów</span></li>
+        <li><span class="ic">✦</span><span>Edytor rzutów 2D, wycena CMA z AI, 12 scenariuszy negocjacji</span></li>
+        <li><span class="ic">✦</span><span>Dashboard <strong>CO TERAZ</strong> — każdego ranka mówi Ci co zrobić</span></li>
+        <li><span class="ic">✦</span><span>Działa offline · dane lokalnie w przeglądarce · bez instalacji</span></li>
+        <li><span class="ic">✦</span><span>12 miesięcy aktualizacji w cenie</span></li>
+        <li class="bonus"><span class="ic">★</span><span>E-book <em>Mentoring Agenta</em> — <strong>gratis w cenie</strong></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap">
+    <div class="fcard">
+      <div class="fsec">Twoje dane</div>
+      <div class="fr">
+        <div><label class="lbl">Imię <span class="r">*</span></label><input type="text" id="f-name" placeholder="Jan"></div>
+        <div><label class="lbl">Nazwisko <span class="r">*</span></label><input type="text" id="f-surname" placeholder="Kowalski"></div>
+      </div>
+      <div class="fg"><label class="lbl">E-mail <span class="r">*</span></label><input type="email" id="f-email" placeholder="jan@biuro.pl"></div>
+      <div class="fg"><label class="lbl">Telefon <span class="r">*</span></label><input type="tel" id="f-phone" placeholder="+48 600 000 000"></div>
+      <div class="fg"><label class="lbl">Właściciel biura (opcjonalnie)</label><input type="text" id="f-owner" placeholder="np. Anna Nowak — właścicielka biura"></div>
+      <div class="fg"><label class="lbl">Kto Cię polecił? (opcjonalnie)</label><input type="text" id="f-ref" placeholder="np. Kasia Nowak, Facebook, Instagram, YouTube…"></div>
+
+      <div class="fsec">Proponowane terminy rozmowy</div>
+      <div class="tbox">
+        <div class="thead">Podaj 3 terminy — potwierdzimy jeden, który nam pasuje</div>
+        <div class="trow"><div class="tn">1</div><input type="datetime-local" id="t1"></div>
+        <div class="trow"><div class="tn">2</div><input type="datetime-local" id="t2"></div>
+        <div class="trow"><div class="tn">3</div><input type="datetime-local" id="t3"></div>
+        <div class="thint">Rozmowa ok. 20–30 min · Zoom · potwierdzimy e-mailem lub SMS</div>
+      </div>
+
+      <div class="fsec">Dane do faktury</div>
+      <div class="togrow">
+        <button class="tog on" onclick="setTyp('priv',this)">Osoba prywatna</button>
+        <button class="tog" onclick="setTyp('comp',this)">Firma / NIP</button>
+      </div>
+      <div id="fp">
+        <div class="fg"><label class="lbl">Adres <span class="r">*</span></label><input type="text" id="f-addr" placeholder="ul. Przykładowa 1/5"></div>
+        <div class="fr">
+          <div><label class="lbl">Kod pocztowy <span class="r">*</span></label><input type="text" id="f-zip" placeholder="40-000"></div>
+          <div><label class="lbl">Miasto <span class="r">*</span></label><input type="text" id="f-city" placeholder="Katowice"></div>
+        </div>
+      </div>
+      <div id="fc" class="cflds">
+        <div class="fg"><label class="lbl">Nazwa firmy <span class="r">*</span></label><input type="text" id="f-cname" placeholder="Firma Sp. z o.o."></div>
+        <div class="fg"><label class="lbl">NIP <span class="r">*</span></label><input type="text" id="f-nip" placeholder="000-000-00-00"></div>
+        <div class="fg"><label class="lbl">Adres firmy <span class="r">*</span></label><input type="text" id="f-caddr" placeholder="ul. Przykładowa 1"></div>
+        <div class="fr">
+          <div><label class="lbl">Kod <span class="r">*</span></label><input type="text" id="f-czip" placeholder="40-000"></div>
+          <div><label class="lbl">Miasto <span class="r">*</span></label><input type="text" id="f-ccity" placeholder="Katowice"></div>
+        </div>
+      </div>
+
+      <div class="fsec">Co Cię dotyczy</div>
+      <div class="bwrap">
+        <div class="bsub">Zaznacz — dzięki temu lepiej przygotujemy się do pierwszego kontaktu</div>
+        <div class="bgrid" id="bole-grid">
+          <label class="bi"><input type="checkbox" value="Piszę ogłoszenia za długo"><span>⏱ Ogłoszenia zajmują za dużo czasu</span></label>
+          <label class="bi"><input type="checkbox" value="Trudne rozmowy o prowizji"><span>💬 Trudne rozmowy o prowizji</span></label>
+          <label class="bi"><input type="checkbox" value="Nie wiem jak pozyskać klientów"><span>🔍 Trudności z pozyskaniem klientów</span></label>
+          <label class="bi"><input type="checkbox" value="Brak specjalizacji lub niszy"><span>🎯 Brak specjalizacji / nisza</span></label>
+          <label class="bi"><input type="checkbox" value="Oferty stoją i się nie sprzedają"><span>📦 Oferty stoją, nie ma kupców</span></label>
+          <label class="bi"><input type="checkbox" value="Nie buduję marki osobistej"><span>🪪 Brak marki osobistej</span></label>
+          <label class="bi"><input type="checkbox" value="Nie używam AI w pracy"><span>🤖 Nie używam AI w pracy agenta</span></label>
+          <label class="bi"><input type="checkbox" value="Agenci w biurze pracują bez systemu"><span>🏢 Biuro bez systemu / procesów</span></label>
+          <label class="bi"><input type="checkbox" value="Zimny kontakt — nie wiem od czego zacząć"><span>📞 Zimny kontakt — nie wiem jak</span></label>
+          <label class="bi"><input type="checkbox" value="Chcę narzędzi AI dla mojego biura"><span>💼 Szukam narzędzi AI dla biura</span></label>
+        </div>
+      </div>
+
+      <div class="fsec">Coś jeszcze (opcjonalnie)</div>
+      <div class="fg"><textarea id="f-notes" rows="3" placeholder="Opisz swoją sytuację własnymi słowami — im więcej wiemy, tym konkretniejszy kontakt."></textarea></div>
+
+      <div class="fsec">Zgoda</div>
+      <label class="ck"><input type="checkbox" id="c-terms"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez Wioletę i Marcina Dutkiewicz (Dutkiewicz Nieruchomości) w celu odpowiedzi na zgłoszenie i realizacji usługi, zgodnie z RODO. Dane nie będą przekazywane osobom trzecim. <span class="r">*</span></span></label>
+
+      <button class="btn" id="btn-sub" onclick="sub()">
+        <span id="btn-txt">Wyślij zgłoszenie — 1 500 zł →</span>
+      </button>
+
+      <div class="notebox">
+        <div class="ndot"></div>
+        <div class="ntxt"><strong>Brak płatności online.</strong> Formularz to zgłoszenie — po krótkiej rozmowie wyślemy fakturę. Płatność przelewem przed aktywacją dostępu.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZOOM LINK -->
+  <div class="zoom-cta">
+    <div class="zoom-inner">
+      <div class="zoom-text">
+        <span class="zoom-label">Masz wątpliwości?</span>
+        Umów bezpłatne spotkanie na Zoom — odpowiemy na pytania zanim podejmiesz decyzję.
+      </div>
+      <a href="zoom_formularz.html" class="zoom-btn">Zoom bezpłatnie →</a>
+    </div>
+  </div>
+
+  <!-- MENTORING LINK -->
+  <div class="mentor-link-footer">
+    <a href="https://www.mentoringagenta.pl/1na1/" target="_blank" rel="noopener">Szukasz mentoringu 1:1? → mentoringagenta.pl/1na1</a>
+  </div>
+
+</div><!-- /#main -->
+
+<!-- TY -->
+<div id="ty">
+  <div class="ty-chk">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3db87a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h2>Zgłoszenie<br><em>przyjęte!</em></h2>
+  <p class="ty-sub">Odezwiemy się w ciągu 24 godzin — potwierdzimy termin rozmowy i wyślemy fakturę. Do aktywacji aplikacji wystarczą 3 kroki.</p>
+  <div class="ty-card">
+    <div class="ty-clbl">Twoje zgłoszenie</div>
+    <div class="ty-row"><span class="k">Imię i nazwisko</span><span class="v" id="ty-name">—</span></div>
+    <div class="ty-row"><span class="k">E-mail</span><span class="v" id="ty-email">—</span></div>
+    <div class="ty-row"><span class="k">Telefon</span><span class="v" id="ty-phone">—</span></div>
+    <div class="ty-row"><span class="k">Pakiet</span><span class="v">Aplikacja — System Biura</span></div>
+    <div class="ty-row tot"><span class="k">Do zapłaty</span><span class="v">1 500 zł</span></div>
+  </div>
+  <div class="ty-terminy">
+    <div class="ty-thead">Zaproponowane terminy</div>
+    <div class="ty-ti"><div class="ty-tnum">1</div><span id="ty-t1">—</span></div>
+    <div class="ty-ti"><div class="ty-tnum">2</div><span id="ty-t2">—</span></div>
+    <div class="ty-ti"><div class="ty-tnum">3</div><span id="ty-t3">—</span></div>
+  </div>
+  <div class="ty-steps">
+    <div class="ty-sl">Co dalej</div>
+    <div class="ty-step"><div class="ty-sn">1</div><div class="ty-st">Odezwiemy się e-mailem lub SMS w ciągu 24h z potwierdzonym terminem rozmowy.</div></div>
+    <div class="ty-step"><div class="ty-sn">2</div><div class="ty-st">Po rozmowie wyślemy fakturę. Dostęp aktywujemy po zaksięgowaniu płatności.</div></div>
+    <div class="ty-step"><div class="ty-sn">3</div><div class="ty-st">Konfigurujesz aplikację w 40 minut — i już następnego ranka system mówi Ci co zrobić.</div></div>
+  </div>
+</div>
+</div><!-- /.page -->
+
+<script>
+const KEY='ma_orders';
+function setTyp(t,el){
+  document.querySelectorAll('.tog').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('fp').style.display=t==='priv'?'block':'none';
+  document.getElementById('fc').classList.toggle('show',t==='comp');
+}
+function fmtDate(v){
+  if(!v)return'—';
+  const d=new Date(v);
+  return d.toLocaleString('pl-PL',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+function saveOrder(o){
+  try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');a.unshift(o);localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}
+}
+function sub(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  if(!name||!email||!phone){alert('Proszę podać imię, e-mail i telefon.');return;}
+  if(!document.getElementById('c-terms').checked){alert('Proszę zaakceptować zgodę RODO.');return;}
+  const surname=document.getElementById('f-surname').value.trim();
+  const owner=document.getElementById('f-owner').value.trim();
+  const ref=document.getElementById('f-ref').value.trim();
+  const t1=document.getElementById('t1').value;
+  const t2=document.getElementById('t2').value;
+  const t3=document.getElementById('t3').value;
+  const isComp=document.getElementById('fc').classList.contains('show');
+  const order={
+    id:'ZGL-'+Date.now(),data:new Date().toLocaleString('pl-PL'),
+    pakiet:'Aplikacja — System Biura',netto:'1 500,00 zł',brutto:'1 500,00 zł',
+    imie:name,nazwisko:surname,email,telefon:phone,wlasciciel:owner,polecajacy:ref,
+    termin1:fmtDate(t1),termin2:fmtDate(t2),termin3:fmtDate(t3),
+    typ_faktury:isComp?'Firma':'Osoba prywatna',
+    firma:isComp?document.getElementById('f-cname').value.trim():'',
+    nip:isComp?document.getElementById('f-nip').value.trim():'',
+    adres:isComp?document.getElementById('f-caddr').value.trim():document.getElementById('f-addr').value.trim(),
+    kod:isComp?document.getElementById('f-czip').value.trim():document.getElementById('f-zip').value.trim(),
+    miasto:isComp?document.getElementById('f-ccity').value.trim():document.getElementById('f-city').value.trim(),
+    uwagi:[...document.querySelectorAll('#bole-grid input:checked')].map(c=>c.value).concat([document.getElementById('f-notes').value.trim()]).filter(Boolean).join(' | '),
+    zrodlo:'formularz.html',status:''
+  };
+  saveOrder(order); if(window.fbq){fbq('track','Lead');}
+  fetch('wyslij.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(order)}).catch(()=>{});
+  document.getElementById('ty-name').textContent=name+' '+surname;
+  document.getElementById('ty-email').textContent=email;
+  document.getElementById('ty-phone').textContent=phone;
+  document.getElementById('ty-t1').textContent=fmtDate(t1);
+  document.getElementById('ty-t2').textContent=fmtDate(t2);
+  document.getElementById('ty-t3').textContent=fmtDate(t3);
+  document.getElementById('main').style.display='none';
+  document.getElementById('ty').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const mn=new Date().toISOString().slice(0,16);
+['t1','t2','t3'].forEach(id=>document.getElementById(id).min=mn);
+</script>
+</body>
+</html>
