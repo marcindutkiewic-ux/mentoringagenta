@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="pl" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentoring Agenta, AgentOS · System operacyjny agenta nieruchomości</title>
+<meta name="description" content="AgentOS dla agenta nieruchomości: każdego ranka mówi Ci, co zrobić. Schemat prowadzenia klienta + 20 generatorów AI. Teraz 1500 zł, wkrótce 2500 zł.">
+<meta name="theme-color" content="#060d1c">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" href="logo-ma.png">
+<link rel="apple-touch-icon" href="logo-ma.png">
+<meta property="og:title" content="Mentoring Agenta, AgentOS dla agenta nieruchomości">
+<meta property="og:image" content="https://www.mentoringagenta.pl/og-mentoringagenta.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mentoring Agenta — AgentOS dla agenta nieruchomości">
+<meta name="twitter:description" content="Każdego ranka mówi Ci, co zrobić. Schemat prowadzenia klienta + 20 generatorów AI.">
+<meta name="twitter:image" content="https://www.mentoringagenta.pl/og-mentoringagenta.jpg">
+<link rel="canonical" href="https://www.mentoringagenta.pl/">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Mentoring Agenta — AgentOS","description":"System operacyjny agenta nieruchomości: schemat prowadzenia klienta + 20 generatorów AI. Każdego ranka mówi Ci, co zrobić.","brand":{"@type":"Brand","name":"Mentoring Agenta"},"image":"https://www.mentoringagenta.pl/og-mentoringagenta.jpg","offers":{"@type":"Offer","price":"1500","priceCurrency":"PLN","availability":"https://schema.org/InStock","url":"https://www.mentoringagenta.pl/"}}</script>
+<meta property="og:description" content="Każdego ranka mówi Ci, co zrobić. Schemat prowadzenia klienta + 20 generatorów AI. Teraz 1500 zł.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mentoringagenta.pl/">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Mentoring Agenta">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js';</script>
+<style>
+:root{
+  --bg:#060d1c; --bg2:#081124; --panel:#0b1730;
+  --card:rgba(10,20,40,.88); --line:rgba(230,200,130,.15);
+  --txt:#eef2fb; --mut:#9fb0c9;
+  --gold:#c99a3a; --gold2:#f2d489;
+  --goldgrad:linear-gradient(110deg,#b8860b 0%,#f2d489 52%,#c99a3a 100%);
+  --ok:#8fd6a0; --warn:#e6b45a;
+  --r-card:20px; --r-field:13px; --r-btn:14px;
+  --shadow-card:0 24px 60px rgba(0,0,0,.55);
+  --shadow-btn:0 14px 40px rgba(201,154,58,.42);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg); color:var(--txt);
+  line-height:1.6; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* tło z poświatami */
+body::before{
+  content:''; position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(760px 560px at 80% 6%, rgba(201,154,58,.14), transparent 62%),
+    radial-gradient(720px 640px at 6% 38%, rgba(45,95,180,.15), transparent 64%),
+    radial-gradient(840px 700px at 60% 98%, rgba(24,52,115,.18), transparent 66%),
+    linear-gradient(180deg,#060d1c,#081124 58%,#03070f);
+  pointer-events:none;
+}
+#bg3d{position:fixed; inset:0; z-index:0; pointer-events:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif; font-weight:700; line-height:1.08;}
+.eyebrow{
+  font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold2); font-weight:700; margin-bottom:18px;
+}
+.grad-txt{background:var(--goldgrad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.mut{color:var(--mut);}
+
+/* NAV */
+nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(14px); background:rgba(6,13,28,.78);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex; align-items:center; justify-content:space-between; height:66px;}
+.brand{display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700;}
+.brand .navlogo{width:40px; height:40px; display:block; filter:drop-shadow(0 6px 18px rgba(201,154,58,.28));}
+.brand b{font-weight:700;} .brand i{color:var(--gold2); font-style:italic;}
+/* logo hero */
+.logo-hero{display:inline-flex; flex-direction:column; align-items:center; gap:16px; margin-bottom:8px;}
+.logo-hero .herologo{width:118px; height:118px; display:block; filter:drop-shadow(0 20px 55px rgba(201,154,58,.32));}
+.logo-hero .word{font-family:'Cormorant Garamond',serif; font-size:27px; line-height:1; letter-spacing:.5px;}
+.logo-hero .word .m{color:#f5f1e8;} .logo-hero .word .a{color:var(--gold2);}
+.nav-links{display:flex; align-items:center; gap:28px; font-size:14px;}
+.nav-links a.link{color:var(--mut); transition:color .2s;}
+.nav-links a.link:hover{color:var(--txt);}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; justify-content:center;
+  background:var(--goldgrad); color:#060d1c; font-weight:800; font-size:15px;
+  padding:13px 22px; border-radius:var(--r-btn); border:none; cursor:pointer;
+  box-shadow:var(--shadow-btn); transition:transform .2s var(--ease), box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:0 20px 50px rgba(201,154,58,.55);}
+.btn.ghost{background:transparent; border:1px solid var(--line); box-shadow:none; color:var(--txt);}
+.btn.ghost:hover{border-color:var(--gold2); background:rgba(201,154,58,.10);}
+.btn.sm{padding:10px 16px; font-size:14px;}
+@media(max-width:860px){.nav-links .link{display:none;}}
+
+/* HERO */
+.hero{padding:96px 0 80px; text-align:center; position:relative;}
+.hero h1{font-size:clamp(44px,7vw,88px); letter-spacing:-.01em; margin:22px 0 24px;}
+.hero h1 em{font-style:italic; color:var(--gold2);}
+.hero .sub{font-size:clamp(17px,2.1vw,21px); color:var(--mut); max-width:720px; margin:0 auto 20px;}
+.hero .sub b{color:var(--txt); font-weight:700;}
+.chips{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:30px 0 34px;}
+.chip{
+  background:var(--card); border:1px solid var(--line); border-radius:999px;
+  padding:9px 18px; font-size:13.5px; font-weight:500; color:var(--txt);
+}
+.hero-cta{display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
+.scrolltag{margin-top:56px; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--mut);}
+
+/* SECTIONS */
+section{padding:88px 0; position:relative;}
+.sec-head{max-width:760px; margin:0 auto 52px; text-align:center;}
+.sec-head h2{font-size:clamp(32px,4.6vw,52px); margin:14px 0 18px; letter-spacing:-.01em;}
+.sec-head h2 em{font-style:italic; color:var(--gold2);}
+.sec-head p{color:var(--mut); font-size:17px;}
+
+/* CARD */
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--r-card);
+  padding:28px; box-shadow:var(--shadow-card);
+}
+.grid{display:grid; gap:20px;}
+.g2{grid-template-columns:repeat(2,1fr);}
+.g3{grid-template-columns:repeat(3,1fr);}
+.g4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+.numtag{font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:700; color:var(--gold2); line-height:1; margin-bottom:12px; display:block;}
+.card h3{font-size:24px; margin-bottom:10px;}
+.card p{color:var(--mut); font-size:15px;}
+.card p b{color:var(--txt);}
+
+/* filter list dla-kogo */
+.filter{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media(max-width:820px){.filter{grid-template-columns:1fr;}}
+.filter .col{border-radius:var(--r-card); padding:28px; border:1px solid var(--line); background:var(--card);}
+.filter .yes{border-color:rgba(94,230,168,.28);}
+.filter .no{border-color:rgba(255,180,84,.24);}
+.filter h4{font-family:'Inter'; font-weight:800; font-size:16px; margin-bottom:4px;}
+.filter .who{font-size:12.5px; color:var(--mut); letter-spacing:.08em; text-transform:uppercase; margin-bottom:16px;}
+.filter ul{list-style:none; display:grid; gap:11px;}
+.filter li{font-size:14.5px; color:var(--txt); padding-left:26px; position:relative;}
+.filter .yes li::before{content:'✓'; position:absolute; left:0; color:var(--ok); font-weight:800;}
+.filter .no li::before{content:'✗'; position:absolute; left:0; color:var(--warn); font-weight:800;}
+
+/* timeline */
+.timeline{display:grid; gap:16px; max-width:840px; margin:0 auto;}
+.tl-item{display:grid; grid-template-columns:130px 1fr; gap:22px; align-items:start; padding:22px 26px; border:1px solid var(--line); border-radius:var(--r-card); background:var(--card);}
+.tl-item .when{font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:700; color:var(--gold2);}
+.tl-item h4{font-family:'Inter'; font-weight:700; font-size:17px; margin-bottom:6px;}
+.tl-item p{color:var(--mut); font-size:14.5px;}
+@media(max-width:640px){.tl-item{grid-template-columns:1fr; gap:8px;}}
+
+/* etapy schemat */
+.stages{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+@media(max-width:900px){.stages{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.stages{grid-template-columns:1fr;}}
+.stage{padding:22px; border:1px solid var(--line); border-radius:var(--r-card); background:var(--card);}
+.stage .st{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold2); font-weight:700;}
+.stage h4{font-family:'Cormorant Garamond',serif; font-size:23px; margin:8px 0 12px;}
+.stage ul{list-style:none; display:grid; gap:8px;}
+.stage li{font-size:13.5px; color:var(--mut); padding-left:16px; position:relative;}
+.stage li::before{content:'·'; position:absolute; left:2px; color:var(--gold2); font-weight:800;}
+
+/* stat row */
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center;}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr;}}
+.stat .n{font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:700; background:var(--goldgrad); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1;}
+.stat .l{font-size:13.5px; color:var(--mut); margin-top:6px;}
+
+/* pricing */
+.price-card{max-width:720px; margin:0 auto; padding:40px; text-align:left;}
+.price-alert{display:flex; gap:12px; align-items:center; background:rgba(255,180,84,.1); border:1px solid rgba(255,180,84,.28); border-radius:var(--r-field); padding:14px 18px; font-size:14px; color:var(--txt); margin-bottom:26px;}
+.price-num{display:flex; align-items:baseline; gap:16px; margin-bottom:6px;}
+.price-num .old{font-family:'Cormorant Garamond',serif; font-size:34px; color:var(--mut); text-decoration:line-through;}
+.price-num .now{font-family:'Cormorant Garamond',serif; font-size:64px; font-weight:700; background:var(--goldgrad); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1;}
+.price-sub{font-size:13.5px; color:var(--mut); margin-bottom:26px;}
+.incl{list-style:none; display:grid; gap:13px; margin-bottom:28px;}
+.incl li{font-size:14.5px; padding-left:28px; position:relative; color:var(--mut);}
+.incl li b{color:var(--txt);}
+.incl li::before{content:'✓'; position:absolute; left:0; color:var(--ok); font-weight:800;}
+.price-cta{display:flex; flex-wrap:wrap; gap:14px;}
+
+/* FAQ */
+.faq{max-width:820px; margin:0 auto; display:grid; gap:12px;}
+.faq details{border:1px solid var(--line); border-radius:var(--r-field); background:var(--card); overflow:hidden;}
+.faq summary{cursor:pointer; padding:20px 24px; font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'+'; color:var(--gold2); font-size:24px; font-weight:400; transition:transform .25s;}
+.faq details[open] summary::after{transform:rotate(45deg);}
+.faq details p{padding:0 24px 22px; color:var(--mut); font-size:14.5px;}
+.faq details p a{color:var(--gold2);}
+
+/* trust bar */
+.trust{display:flex; flex-wrap:wrap; gap:22px; justify-content:center; font-size:13.5px; color:var(--mut); margin-top:22px;}
+
+/* team / o nas */
+.team{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+@media(max-width:820px){.team{grid-template-columns:1fr;}}
+.member{padding:30px;}
+.member .top{display:flex; align-items:center; gap:18px; margin-bottom:18px;}
+.avatar{
+  width:88px; height:88px; border-radius:50%; flex:none; display:grid; place-items:center;
+  background:#060d1c; position:relative; overflow:hidden;
+  background-image:linear-gradient(#060d1c,#060d1c),var(--goldgrad);
+  background-origin:border-box; background-clip:padding-box,border-box; border:3px solid transparent;
+  box-shadow:0 10px 30px rgba(201,154,58,.25);
+  font-family:'Cormorant Garamond',serif; font-weight:700; font-size:32px;
+}
+.avatar span{background:var(--goldgrad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%;}
+.member h3{font-size:26px; line-height:1.1;}
+.member .role{font-family:'Inter'; font-weight:700; font-size:12.5px; letter-spacing:.04em; color:var(--gold2); margin-top:5px; text-transform:uppercase;}
+.member .tag{display:inline-block; margin-top:8px; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mut); border:1px solid var(--line); border-radius:999px; padding:4px 12px;}
+.member .bio{color:var(--mut); font-size:14.5px; margin-bottom:14px;}
+.member .bio b{color:var(--txt);}
+.member .motto{border-left:2px solid var(--gold); padding:8px 0 8px 16px; margin:0 0 16px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--txt);}
+.social{display:flex; gap:10px; flex-wrap:wrap;}
+.social a{display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:600; color:var(--txt);
+  border:1px solid var(--line); border-radius:999px; padding:8px 14px; transition:border-color .2s, background .2s, transform .2s;}
+.social a:hover{border-color:var(--gold2); background:rgba(201,154,58,.10); transform:translateY(-2px);}
+.social svg{width:15px; height:15px; fill:var(--gold2);}
+
+/* ksiazka */
+.book{display:grid; grid-template-columns:auto 1fr auto; gap:26px; align-items:center; padding:26px 30px; margin-top:22px;}
+.book img{width:104px; height:auto; border-radius:8px; box-shadow:0 14px 40px rgba(0,0,0,.5); flex:none;}
+.book .bk-role{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold2); font-weight:700;}
+.book h3{font-size:25px; line-height:1.12; margin:6px 0 8px;}
+.book .stars{color:var(--gold2); font-size:15px; letter-spacing:2px;}
+.book .stars b{color:var(--mut); font-weight:500; font-size:13px; letter-spacing:0;}
+.book p{color:var(--mut); font-size:14px; margin-top:8px; max-width:520px;}
+.book .bk-cta{text-align:right;}
+.book .bk-price{font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--txt); margin-bottom:10px;}
+@media(max-width:820px){
+  .book{grid-template-columns:1fr; text-align:center; justify-items:center;}
+  .book .bk-cta{text-align:center;} .book p{max-width:none;}
+}
+
+/* footer */
+footer{border-top:1px solid var(--line); padding:56px 0 40px; margin-top:40px;}
+.foot-in{display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:center;}
+.foot-links{display:flex; flex-wrap:wrap; gap:24px; font-size:14px; color:var(--mut);}
+.foot-links a:hover{color:var(--txt);}
+.foot-legal{font-size:13px; color:var(--mut); margin-top:26px; text-align:center;}
+
+/* reveal base (JS toggles) */
+.js .reveal{opacity:0;}
+
+/* sticky mobile CTA (forma telefonu) */
+.mbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:60;
+  display:none; gap:10px; padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(5,11,24,.94); backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);
+}
+.mbar a{flex:1; text-align:center; padding:13px 10px; border-radius:12px; font-weight:700; font-size:14.5px;}
+.mbar .buy{background:var(--goldgrad); color:#060d1c; box-shadow:0 -2px 24px rgba(201,154,58,.35);}
+.mbar .demo{border:1px solid var(--line); color:var(--txt);}
+@media(max-width:820px){ .mbar{display:flex;} body{padding-bottom:78px;} }
+
+/* CTA band */
+.band{text-align:center; padding:96px 0;}
+.band h2{font-size:clamp(34px,5vw,58px); margin-bottom:20px;}
+.band h2 em{font-style:italic; color:var(--gold2);}
+.band .hero-cta{margin-top:30px;}
+
+/* ============ PREMIUM POLISH ============ */
+/* subtelny grain (glebia) */
+body::after{
+  content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:150px 150px;
+}
+/* pasek postepu scrolla */
+#progress{position:fixed; top:0; left:0; height:2px; width:0; z-index:70; background:var(--goldgrad); box-shadow:0 0 12px rgba(242,212,137,.5);}
+/* eyebrow: zlota kreska */
+.eyebrow{display:inline-flex; align-items:center; gap:11px;}
+.eyebrow::before{content:''; width:26px; height:1px; background:var(--goldgrad); flex:none;}
+/* przyciski: metaliczny przeblysk */
+.btn{position:relative; overflow:hidden;}
+.btn::after{
+  content:''; position:absolute; top:0; left:-130%; width:55%; height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg); transition:left .6s var(--ease);
+}
+.btn:hover::after{left:150%;}
+/* karty: unoszenie + zloty poblysk krawedzi */
+.card,.stage,.tl-item,.filter .col{transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);}
+.card:hover,.stage:hover,.tl-item:hover,.filter .col:hover{
+  transform:translateY(-4px);
+  border-color:rgba(230,200,130,.34);
+  box-shadow:0 30px 72px rgba(0,0,0,.5), 0 0 0 1px rgba(230,200,130,.12), inset 0 1px 0 rgba(242,212,137,.10);
+}
+/* nav: zageszczenie po scrollu + aktywny link */
+nav .nav-in{transition:height .28s var(--ease);}
+nav.scrolled{background:rgba(4,9,20,.9);}
+nav.scrolled .nav-in{height:56px;}
+.nav-links a.link{position:relative;}
+.nav-links a.link.active{color:var(--txt);}
+.nav-links a.link.active::after{content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--goldgrad); border-radius:2px;}
+/* metaliczny przeblysk na "Agenta" */
+@keyframes sheen{to{background-position:200% center;}}
+.logo-hero .word .a{
+  background:linear-gradient(110deg,#c99a3a 0%,#f7e6ac 25%,#c99a3a 50%);
+  background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:sheen 5s linear infinite;
+}
+@media(prefers-reduced-motion:reduce){
+  .logo-hero .word .a{animation:none;}
+}
+
+/* APP SHOTS */
+.app-shots-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;margin-top:8px;}
+.shot-frame{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.45);position:relative;background:#0f1115;transition:transform .25s,box-shadow .25s;}
+.shot-frame:before{content:'';display:block;height:26px;background:#1a1d25;background-image:radial-gradient(circle 3px at 14px 13px,#ff5f57 3px,transparent 3.5px),radial-gradient(circle 3px at 28px 13px,#febc2e 3px,transparent 3.5px),radial-gradient(circle 3px at 42px 13px,#28c840 3px,transparent 3.5px);}
+.shot-frame img{width:100%;display:block;aspect-ratio:1440/900;object-fit:cover;object-position:top;}
+.shot:hover .shot-frame{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.shot figcaption{margin-top:12px;font-size:13px;color:var(--mut,#9aa3b2);line-height:1.6;}
+.shot figcaption b{display:block;color:var(--txt,#e7e9ee);font-size:15px;margin-bottom:2px;}
+</style>
+
+<style id="maa-mobile-fix">@media (max-width:600px){#maa-teaser{display:none!important}#maa-launch{right:12px!important;bottom:88px!important;width:52px!important;height:52px!important;min-width:0!important;padding:0!important;gap:0!important;justify-content:center!important;border-radius:50%!important;font-size:0!important;box-shadow:0 8px 24px rgba(0,0,0,.35)!important}#maa-launch .maa-dot{display:none!important}#maa-launch::before{content:"?"!important;font:800 26px/1 Inter,system-ui,sans-serif!important;color:#1a1407!important}}</style>
+</head>
+<body>
+<canvas id="bg3d"></canvas>
+
+<!-- LOGO (samodzielny SVG, metaliczne zloto) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ma-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbeeb8"/>
+      <stop offset=".40" stop-color="#e9c66e"/>
+      <stop offset=".68" stop-color="#c99a3a"/>
+      <stop offset="1" stop-color="#7d5a12"/>
+    </linearGradient>
+    <linearGradient id="ma-frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6e2a4"/>
+      <stop offset=".5" stop-color="#c99a3a"/>
+      <stop offset="1" stop-color="#8a6414"/>
+    </linearGradient>
+        <symbol id="ma-logo" viewBox="0 0 120 120">
+      <!-- Nowe logo MA: granat + złoto, "System Operacyjny Agenta" -->
+      <g fill="none" stroke-linecap="square" stroke-linejoin="miter">
+        <!-- M granat -->
+        <path d="M14 96 V30 L44 66 L44 96" fill="none" stroke="#16284a" stroke-width="15"/>
+        <path d="M14 30 L44 66" fill="none" stroke="#16284a" stroke-width="15"/>
+        <!-- A złote (przesunięte w prawo, nachodzi) -->
+        <path d="M74 96 L98 24" fill="none" stroke="#c9993a" stroke-width="15"/>
+        <path d="M60 68 L88 68" fill="none" stroke="#c9993a" stroke-width="13"/>
+        <!-- A granat lewa noga -->
+        <path d="M52 96 L66 52" fill="none" stroke="#16284a" stroke-width="13"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><img class="navlogo" src="logo-ma.png" alt="Mentoring Agenta"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
+    <div class="nav-links">
+      <a class="link" href="#app">Aplikacja</a>
+      <a class="link" href="#mechanizm">Jak działa</a>
+      <a class="link" href="#demo">Demo 30 min</a>
+      <a class="link" href="#cena">Cena</a>
+      <a class="link" href="#onas">O nas</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="btn sm" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo bezpłatnie →</a>
+    </div>
+  </div>
+</nav>
+
+<div id="progress"></div>
+<div id="top"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="logo-hero reveal">
+      <img class="herologo" src="logo-ma.png" alt="Mentoring Agenta">
+      <div class="word"><span class="m">Mentoring</span> <span class="a">Agenta</span></div>
+    </div>
+    <div class="eyebrow reveal" style="margin-top:26px">AgentOS · Pierwszy system operacyjny dla agenta nieruchomości</div>
+    <h1 class="reveal">Każdego ranka mówi Ci<br><em>co zrobić.</em> Zanim Ty pomyślisz.</h1>
+    <p class="sub reveal"><b>System operacyjny pracy agenta.</b> Otwierasz — widzisz co zrobić. Klikasz — robisz.</p>
+    <div class="hero-cta reveal">
+      <a class="btn" href="#app">Zobacz system w akcji →</a>
+      <a class="btn ghost" href="#demo">Demo 30 min, bezpłatnie</a>
+    </div>
+    <div class="reveal mut" style="font-size:13px; margin-top:16px;">Jednorazowo, bez abonamentu · 14 dni na zwrot (konsumenci) · Faktura · Dostęp od razu</div>
+    <div class="scrolltag reveal">Przewiń ↓</div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Problem, którego nie rozwiąże kolejne szkolenie</div>
+      <h2>Masz spotkania. <em>Klient znika.</em></h2>
+      <p>To nie problem rynku. To brak procesu.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card reveal"><span class="numtag">01</span><h3>Diagnoza</h3><p>Dlaczego klienci nie wracają?</p></div>
+      <div class="card reveal"><span class="numtag">02</span><h3>Napięcie</h3><p>Bo prowadzisz rozmowę, nie proces.</p></div>
+      <div class="card reveal"><span class="numtag">03</span><h3>Rozwiązanie</h3><p>Kontakt → kwalifikacja → decyzja.</p></div>
+      <div class="card reveal"><span class="numtag">04</span><h3>Dowód</h3><p>52 moduły prowadzą za rękę.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DLA KOGO -->
+<section id="dlakogo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Uczciwy filtr</div>
+      <h2>Dla kogo to jest zbudowane</h2>
+      <p>Zanim wydasz 1 500 zł, sprawdź, czy to dla Ciebie. Wolimy stracić klienta teraz niż dać mu coś, z czego nie skorzysta.</p>
+    </div>
+    <div class="filter">
+      <div class="col yes reveal">
+        <h4>✓ To jest dla Ciebie, jeśli</h4>
+        <div class="who">Agent, biuro lub asystent — na każdym etapie</div>
+        <ul>
+          <li>Pracujesz w nieruchomościach i chcesz transakcje, nie chaos</li>
+          <li>Wiesz, że brakuje Ci systemu, nie wiedzy</li>
+          <li>Prowadzisz biuro — chcesz jeden proces dla zespołu</li>
+          <li>Jesteś asystentem — odciążasz agentów</li>
+          <li>Chcesz pracować konsekwentnie</li>
+        </ul>
+      </div>
+      <div class="col no reveal">
+        <h4>✗ To nie jest dla Ciebie, jeśli</h4>
+        <div class="who">Zły moment lub profil</div>
+        <ul>
+          <li>Szukasz gwarancji wyniku</li>
+          <li>Liczysz na „prowadzenie za rękę" bez własnej pracy</li>
+          <li>Nie pracujesz w nieruchomościach</li>
+          <li>Czekasz na gotowe leady</li>
+          <li>Nie chcesz założyć klucza API (5 min)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Zanim kupisz</div>
+      <h2>30 minut. Twoje dane. <em>Na żywo.</em></h2>
+      <p>Nie prezentacja slajdów. Wpisujesz dane prawdziwego klienta ze swojego rynku, AI pisze, liczy, generuje. Ty widzisz, ile czasu to zajmuje.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><span class="eyebrow" style="margin-bottom:10px">Minuty 0–10</span><h3>SMS i follow-up</h3><p>AI pisze SMS i follow-up na Twoich danych</p></div>
+      <div class="card reveal"><span class="eyebrow" style="margin-bottom:10px">Minuty 10–20</span><h3>Analiza CMA + negocjacje</h3><p>AI szuka transakcji i daje przedział cenowy</p></div>
+      <div class="card reveal"><span class="eyebrow" style="margin-bottom:10px">Minuty 20–30</span><h3>Symulator + Twoje pytania</h3><p>Symulator trudnej rozmowy + Twoje pytania</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:22px; text-align:center;">
+      <div class="grid g4" style="margin-bottom:22px; text-align:left;">
+        <p class="mut" style="font-size:14px">✓ Aplikacja na żywo, bez ograniczeń</p>
+        <p class="mut" style="font-size:14px">✓ Zapis rozmowy z Twojego rynku</p>
+        <p class="mut" style="font-size:14px">✓ Szczera odpowiedź: czy się zwróci</p>
+        <p class="mut" style="font-size:14px">✓ Zero presji.</p>
+      </div>
+      <a class="btn" href="https://www.mentoringagenta.pl/zoom_formularz.html">Rezerwuję termin →</a>
+      <div class="mut" style="font-size:13px; margin-top:14px;">Zoom / Teams / telefon · 30 minut · bezpłatnie · w tym tygodniu · odpowiem w ciągu kilku godzin</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 FILARY -->
+<section id="filary">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Co naprawdę dostajesz</div>
+      <h2>Trzy filary, na których stoi proces</h2>
+      <p>Schemat pracy z klientem, marka która przyciąga i codzienne ćwiczenie — razem zamieniają agenta improwizującego w agenta z systemem.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><span class="numtag">01</span><h3>Schemat prowadzenia klienta</h3><p>Skrypt, narzędzie AI i checklista na każdym etapie.</p></div>
+      <div class="card reveal"><span class="numtag">02</span><h3>Marka osobista agenta</h3><p>Posty, Reels, LinkedIn. Klienci sami piszą.</p></div>
+      <div class="card reveal"><span class="numtag">03</span><h3>Ciągły rozwój w pracy</h3><p>Diagnoza, plan 90 dni, symulator. Uczysz się w pracy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">To nie mockup. To produkcja.</div>
+      <h2>Otwierasz aplikację. <em>Wiesz co robić.</em></h2>
+      <p>Rzeczywisty interfejs aplikacji, której używają agenci. Otwierasz „Co teraz", wybierasz jedną akcję i działasz — bez wyboru między 20 opcjami.</p>
+    </div>
+<div class="app-shots-grid">
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_dash.png" alt="Pulpit aplikacji — onboarding pierwsze 4 kroki" loading="lazy"></div>
+        <figcaption><b>⚡ Pulpit — Onboarding</b><span>Dzień 1: agent wie co robić</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_cma.png" alt="Analiza CMA z web search" loading="lazy"></div>
+        <figcaption><b>📊 Analiza CMA</b><span>Przedział cenowy + PDF dla klienta</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_schemat.png" alt="Schemat Pracy Agenta" loading="lazy"></div>
+        <figcaption><b>🗺️ Schemat Pracy Agenta</b><span>System prowadzi krok po kroku</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_klienci.png" alt="Baza Klientów CRM" loading="lazy"></div>
+        <figcaption><b>👥 Klienci — pełny CRM</b><span>Pipeline, follow-upy, WhatsApp</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_offer.png" alt="Praca z ofertą" loading="lazy"></div>
+        <figcaption><b>📄 Praca z ofertą</b><span>Od rezerwacji do kluczy</span></figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <div class="shot-frame"><img src="/img/app_dash.png" alt="Onboarding pierwsze 4 kroki" loading="lazy"></div>
+        <figcaption><b>🚀 Pierwszy dzień agenta</b><span>Diagnoza, plan 30/60/90, planer — od razu do działania</span></figcaption>
+      </figure>
+    </div>
+    </section>
+
+<!-- JAK DZIALA / ONBOARDING -->
+<section id="mechanizm">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Jak wygląda wejście w system</div>
+      <h2>Od zakupu do <em>pierwszego klienta</em></h2>
+      <p>Nie dostajesz 52 modułów naraz. Dostajesz plan, który wprowadza Cię w system kawałkami — tak, żebyś nie utknął.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="when">Dzień 1–3</div><div><h4>Setup i klucze API</h4><p>Konfigurujesz licencję, klucz Anthropic (5 USD gratis na start), dane agenta i Manifest. 30–40 minut. Aplikacja zna już Twoje imię, telefon, specjalizację — generatory wypełniają się same.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Tydzień 1</div><div><h4>Fundamenty i pierwsze skrypty</h4><p>Przechodzisz przez Schemat Pracy Agenta. Uczysz się, kiedy używać którego modułu. Zaczynasz generować pierwsze opisy ofert i posty social.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Tydzień 2</div><div><h4>Pierwsza rozmowa w systemie</h4><p>Klient dzwoni, używasz kreatora „Klient dzwoni do nas". Masz za sobą strukturę, pytania, zamknięcie. To pierwszy moment, w którym czujesz różnicę.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Tydzień 3–4</div><div><h4>Pełny pipeline w ruchu</h4><p>Follow-upy 1-7-30 działają. Protokół Martwej Oferty odświeża stare listingi. Pierwsze Dni Otwarte z gotowym checklistem. System pracuje na Ciebie, nie odwrotnie.</p></div></div>
+      <div class="tl-item reveal"><div class="when">Dalej</div><div><h4>Dostęp bezterminowy + aktualizacje 12 mies.</h4><p>Kupujesz raz. Używasz zawsze. Aktualizacje w cenie przez 12 miesięcy, potem działa dalej na wersji, którą masz.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEMAT -->
+<section id="schemat">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Najważniejszy moduł</div>
+      <h2>Schemat prowadzenia klienta <em>wspomagany AI</em></h2>
+      <p>Zbudowany na metodach najlepszych agentów w Polsce. Każdy etap — od pierwszego SMS-a do wydania kluczy — ma gotowy skrypt, narzędzie AI i listę kontrolną.</p>
+    </div>
+    <div class="stages">
+      <div class="stage reveal"><div class="st">Etap 01</div><h4>Pozyskanie</h4><ul><li>Zimny kontakt AI</li><li>Elevator pitch</li><li>Skrypt pierwszej rozmowy</li><li>Kwalifikacja klienta</li></ul></div>
+      <div class="stage reveal"><div class="st">Etap 02</div><h4>Spotkanie</h4><ul><li>Audyt nieruchomości</li><li>Analiza CMA live</li><li>Argumenty wyłączności</li><li>Zamknięcie umowy</li></ul></div>
+      <div class="stage reveal"><div class="st">Etap 03</div><h4>Marketing</h4><ul><li>Generator opisów</li><li>Hooki AI</li><li>Dzień otwarty</li><li>Kwalifikacja kupujących</li></ul></div>
+      <div class="stage reveal"><div class="st">Etap 04</div><h4>Zamknięcie</h4><ul><li>Skrypt negocjacji</li><li>Umowa rezerwacyjna</li><li>Przygotowanie do aktu</li><li>Rekomendacje</li></ul></div>
+    </div>
+    <div class="card reveal" style="margin-top:22px;">
+      <h3 style="font-size:22px; margin-bottom:14px;">AI Coach przy każdym etapie</h3>
+      <div class="grid g2">
+        <p class="mut" style="font-size:14.5px">→ Przed spotkaniem: AI generuje analizę CMA i argumenty wyłączności pod konkretną nieruchomość</p>
+        <p class="mut" style="font-size:14.5px">→ Po prezentacji: gotowy SMS follow-up z nawiązaniem do konkretnych słów klienta</p>
+        <p class="mut" style="font-size:14.5px">→ Negocjacje ceny: AI daje 5 argumentów + skrypt rozmowy w 8 minut</p>
+        <p class="mut" style="font-size:14.5px">→ Po akcie: sekwencja 1-7-30-90-365 zamienia klienta w źródło poleceń</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DLA BIUR -->
+<section id="biura">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Dla właścicieli biur i team leaderów</div>
+      <h2>Onboarding nowego agenta <em>w 30 dni</em>, nie 6 miesięcy</h2>
+      <p>Twój nowy agent dostaje gotowy program 30/60/90 dni — z zadaniami, skryptami i AI Coach na każdym etapie. Nie musisz go prowadzić za rękę.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><span class="numtag">30</span><h3 style="font-size:20px">pierwszych dni</h3><p>Fundamenty, mentalność, pierwsze skrypty. Agent wie kim jest i co mówi przy pierwszym kontakcie z klientem.</p></div>
+      <div class="card reveal"><span class="numtag">60</span><h3 style="font-size:20px">dzień, pipeline</h3><p>Pozyskiwanie, pierwsze spotkania, analizy CMA. Samodzielnie prowadzi klienta przez cały schemat transakcji.</p></div>
+      <div class="card reveal"><span class="numtag">90</span><h3 style="font-size:20px">dzień, transakcja</h3><p>Pierwsza zamknięta transakcja. System śledzi postęp, nagradza streak i podpowiada co dalej — bez angażowania Ciebie.</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:22px; text-align:center;">
+      <p class="mut" style="font-size:15px; margin-bottom:18px;">Ile kosztuje biuro gdy agent odchodzi po 4 miesiącach? Rekrutacja, wdrożenie, przepalone leady, czas managera — szacunki mówią o 15 000–30 000 zł na jednego agenta. Ten system skraca wdrożenie i daje agentowi powód, żeby zostać.</p>
+      <a class="btn ghost" href="https://www.mentoringagenta.pl/zoom_formularz.html">Porozmawiajmy o biurze →</a>
+    </div>
+  </div>
+</section>
+
+<!-- O NAS / TWORCY -->
+<section id="onas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Twórcy</div>
+      <h2>Ludzie za <em>Mentoring Agenta</em></h2>
+      <p>System zbudowany przez praktyków rynku nieruchomości — połączenie strategii sprzedaży i negocjacji z marketingiem i technologią.</p>
+    </div>
+    <div class="team">
+      <div class="member card reveal">
+        <div class="top">
+          <div class="avatar"><span>WD</span><img src="wioleta.jpg" alt="Wioleta Dutkiewicz" style="object-position:center 12%" onerror="this.remove()"></div>
+          <div>
+            <h3>Wioleta Dutkiewicz</h3>
+            <div class="role">Founding Partner · Lead Real Estate Strategist &amp; Negotiator</div>
+            <span class="tag">Współautorka systemu</span>
+          </div>
+        </div>
+        <p class="motto">„Każdy jest reżyserem swojego życia — wystarczy połączyć pasję, głód sukcesu i 100% zaangażowania."</p>
+        <p class="bio">Wioleta to <b>serce i strategiczny umysł firmy</b>. Licencjonowana ekspertka z wieloletnim doświadczeniem, która łączy dogłębną wiedzę rynkową z rzadką intuicją i precyzją w negocjacjach. To ona stoi na czele każdej transakcji, dbając o to, by strategia sprzedaży była idealnie dopasowana do specyfiki nieruchomości i celów Klienta.</p>
+        <p class="bio">Inspirująca liderka i mentorka — wierzy, że sukces buduje się na autentyczności i zaufaniu. Kieruje się bezkompromisową jakością, transparentnością i dyskrecją, fundamentem obsługi segmentu premium. Prywatnie spełniona żona i mama, która łączy dynamikę biznesu z harmonią życia rodzinnego.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/dutkiewiczwioleta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-2 2-2h2V2.5C18.6 2.4 17.5 2 16 2c-3 0-5 1.8-5 5.2V10H8v4h3v8h2z"/></svg>Facebook</a>
+          <a href="https://www.instagram.com/dutkiewiczwioleta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.3 1.3-.4 2.3-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.8 7a1.2 1.2 0 10 0-2.4 1.2 1.2 0 000 2.4z"/></svg>Instagram</a>
+        </div>
+      </div>
+
+      <div class="member card reveal">
+        <div class="top">
+          <div class="avatar"><span>MD</span><img src="marcin.jpg" alt="Marcin Dutkiewicz" style="object-position:center 32%" onerror="this.remove()"></div>
+          <div>
+            <h3>Marcin Dutkiewicz</h3>
+            <div class="role">Partner · Marketing &amp; Technology Director</div>
+            <span class="tag">Twórca i wizjoner systemu</span>
+          </div>
+        </div>
+        <p class="motto">„Samodyscyplina i wytrwałość to klucze do sukcesu."</p>
+        <p class="bio">Marcin — <b>certyfikowany trener rozwoju, mentor i szkoleniowiec</b>. Właściciel biura nieruchomości oraz twórca licznych projektów biznesowych. Od lat wspiera ludzi w budowaniu marki osobistej, prowadzeniu skutecznych negocjacji i osiąganiu balansu w życiu. Jako lider Klubu 555 dzieli się doświadczeniem i pokazuje, że konsekwencja wygrywa.</p>
+        <p class="bio">To on przekuł metody najlepszych agentów w <b>działający system i narzędzia AI</b>. Prywatnie szczęśliwy mąż i ojciec — jego spokój, precyzja i strategiczne myślenie stanowią idealne dopełnienie dynamicznej energii Wiolety.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/marcin.dutkiewicz.75?locale=pl_PL" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-2 2-2h2V2.5C18.6 2.4 17.5 2 16 2c-3 0-5 1.8-5 5.2V10H8v4h3v8h2z"/></svg>Facebook</a>
+          <a href="https://www.instagram.com/marcin.dutkiewicz1/?hl=pl" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 0 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.3.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.3-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1 0-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.3-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c0-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.3 1.3-.4 2.3-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.8 7a1.2 1.2 0 10 0-2.4 1.2 1.2 0 000 2.4z"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card book reveal">
+      <img src="https://sklepheksagon.pl/wp-content/uploads/2025/10/Mentoring-agenta-grafika-produktu-416x416.jpg" alt="Książka Mentoring Agenta" loading="lazy">
+      <div>
+        <div class="bk-role">Nasza książka</div>
+        <h3>„MENTORING AGENTA. Jak zostać agentem nieruchomości"</h3>
+        <div class="stars">★★★★★ <b>5.0 / 5 · 4 opinie</b></div>
+        <p>Praktyczny przewodnik Wiolety i Marcina Dutkiewicz — 20 rozdziałów: od fundamentów i marki osobistej, przez prospecting, wycenę i negocjacje, po klienta na całe życie. 204 strony, format A5.</p>
+      </div>
+      <div class="bk-cta">
+        <div class="bk-price">98&nbsp;zł</div>
+        <a class="btn" href="https://sklepheksagon.pl/produkt/ksiazka-mentoring-agenta-marcin/" target="_blank" rel="noopener">Zobacz książkę →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE / STATS -->
+<section id="opinie">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Pierwsi użytkownicy · Wczesny dostęp</div>
+      <h2>Co mówią agenci, którzy już testują</h2>
+      <p><b style="color:var(--txt)">Uczciwie:</b> aplikacja 2.0 wystartowała niedawno. Korzysta z niej pierwszych 20 agentów w programie wczesnego dostępu — oto co mówią po pierwszych tygodniach pracy z systemem.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card reveal"><div class="mut" style="font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Wczesny dostęp · Agent</div><p style="font-size:15px; color:var(--txt)">„Najbardziej zmieniło mi follow-upy. Wcześniej po spotkaniu klient znikał, a ja nie wiedziałam, kiedy i z czym wrócić. Teraz system podpowiada dzień i treść — SMS po prezentacji piszę w 2 minuty zamiast pół godziny się zastanawiać. Dwóch klientów wróciło, którzy normalnie by mi uciekli."</p><div class="mut" style="font-size:13px; margin-top:16px;">Sylwia · Agentka, 14 mies. w branży · woj. śląskie</div></div>
+      <div class="card reveal"><div class="mut" style="font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Wczesny dostęp · Biuro</div><p style="font-size:15px; color:var(--txt)">„Wdrożyłem nową agentkę na planie 30/60/90 z aplikacji. Zamiast siedzieć z nią godzinami, sprawdzam raz w tygodniu postęp w systemie. Po miesiącu sama prowadziła pierwsze spotkanie z właścicielem — z analizą CMA, którą przygotowała w aplikacji. To mi realnie zdjęło robotę z głowy."</p><div class="mut" style="font-size:13px; margin-top:16px;">Józef · Właściciel biura · 5 agentów</div></div>
+      <div class="card reveal"><div class="mut" style="font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Wczesny dostęp · Team leader</div><p style="font-size:15px; color:var(--txt)">„Byłem sceptyczny — kolejna apka z AI. Zostałem przy Schemacie Pracy: na spotkaniach zespołu przechodzimy konkretny etap i każdy używa tego samego skryptu. Pierwszy raz cały zespół prowadzi klienta tak samo, a nie każdy po swojemu. Symulator rozmów robi robotę przed trudnymi negocjacjami."</p><div class="mut" style="font-size:13px; margin-top:16px;">Krzysztof · Team leader · Agencja regionalna</div></div>
+      <div class="card reveal"><div class="mut" style="font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:12px;">Wczesny dostęp · Agent</div><p style="font-size:15px; color:var(--txt)">„Jestem na początku drogi i największy problem miałam z tym, od czego zacząć dzień. Otwieram «Co teraz» i mam jedną akcję zamiast listy 20 rzeczy. Opis oferty, który kiedyś pisałam godzinę, generuję i poprawiam w 10 minut. Przestałam czuć, że improwizuję."</p><div class="mut" style="font-size:13px; margin-top:16px;">Wioletta · Agentka, 6 mies. w branży</div></div>
+    </div>
+    <div class="stats reveal" style="margin-top:40px;">
+      <div class="stat"><div class="n">52</div><div class="l">Modułów w aplikacji</div></div>
+      <div class="stat"><div class="n">20+</div><div class="l">Generatorów AI</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">Etapów w Schemacie</div></div>
+      <div class="stat"><div class="n">2026</div><div class="l">Premiera v2.0</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CENA -->
+<section id="cena">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Aplikacja · Self-checkout · Cena wczesnego dostępu</div>
+      <h2>Jednorazowo. <em>Bez abonamentu.</em></h2>
+      <p>Kupujesz raz. Dostęp bezterminowy. Aktualizacje w cenie przez 12 miesięcy. Licencja na 2 urządzenia jednocześnie (komputer + telefon).</p>
+    </div>
+    <div class="card price-card reveal">
+      <div class="price-alert">⏳ <span>Cena wzrośnie do 2 500 zł. Teraz wchodzisz za 1 500 zł — cena dla pierwszych użytkowników. Zmiana bez ostrzeżenia.</span></div>
+      <div class="price-num"><span class="old">2 500 zł</span><span class="now">1 500 zł</span></div>
+      <div class="price-sub">cena całkowita · wczesny dostęp · bez ukrytych opłat</div>
+      <ul class="incl">
+        <li><b>Schemat prowadzenia klienta wspomagany AI</b> — każdy etap od zimnego kontaktu do aktu notarialnego z gotowym skryptem i AI Coach</li>
+        <li><b>Onboarding agenta dla biur</b> — gotowy program 30/60/90 dni dla nowych agentów</li>
+        <li><b>52 moduły</b> — generatory AI, kalkulatory, skrypty, kreatory</li>
+        <li><b>Analiza CMA</b> z web search (Otodom, OLX, Gratka)</li>
+        <li><b>Symulator rozmowy AI</b> — trening na trudnych klientach bez kosztownych coachów</li>
+        <li><b>20+ generatorów AI</b> — SMS, negocjacje, opisy, posty, elevator pitch i więcej</li>
+        <li><b>12 skryptów</b> trudnych rozmów + Protokół Martwej Oferty</li>
+        <li><b>PWA</b> — działa na telefonie jak natywna apka, offline</li>
+      </ul>
+      <div class="price-cta">
+        <a class="btn" href="https://www.mentoringagenta.pl/formularz.html">Kupuję za 1 500 zł →</a>
+        <a class="btn ghost" href="https://www.mentoringagenta.pl/zoom_formularz.html">Najpierw demo (30 min)</a>
+      </div>
+      <div class="mut" style="font-size:13px; margin-top:16px;">💳 Przelew · BLIK · karta · faktura dla firm</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2>Co pytają najczęściej</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>Czy to kolejny kurs online?</summary><p>Nie. Kurs uczy. System operacyjny każdego dnia mówi Ci co zrobić. To narzędzie pracy, nie materiał do przerobienia wieczorem. Nie ma tu „lekcji 1–30". Są generatory, skrypty, kreatory i kalkulatory, których używasz w trakcie realnej pracy z klientem.</p></details>
+      <details class="reveal"><summary>Dlaczego potrzebuję własnego klucza API Anthropic?</summary><p>Żebyś płacił tylko za to, czego faktycznie używasz, i żeby Twoje dane o klientach nie przechodziły przez nasze konto. Założenie klucza to 5 minut, pierwsze 5 USD kredytów dostajesz gratis od Anthropic (wystarcza na kilka miesięcy normalnego użytkowania). Krok po kroku w instrukcji.</p></details>
+      <details class="reveal"><summary>Czy dane moich klientów są bezpieczne?</summary><p>Wszystkie dane (notatki, listy klientów, szkice umów) zostają lokalnie w Twojej przeglądarce (localStorage). Sprzedawca ani nikt inny ich nie widzi. Do AI wysyłana jest tylko treść konkretnego zapytania, nigdy cała baza.</p></details>
+      <details class="reveal"><summary>Co jeśli już używam innych narzędzi (CRM, kalkulatorów)?</summary><p>Aplikacja nie zastępuje CRM-a. Uzupełnia go tam, gdzie CRM-y są słabe: generowanie treści, scenariusze rozmów, protokoły operacyjne, analizy. Większość agentów używa równolegle.</p></details>
+      <details class="reveal"><summary>Co dostaję w ramach aktualizacji 12 miesięcy?</summary><p>Nowe moduły, generatory, ulepszenia. Od wersji 1.0 (35 modułów) do 2.0 (52 moduły) dodaliśmy m.in.: Dzień Otwarty, Schemat Pracy Agenta z AI Coach, Symulator Rozmowy, Oświadczenie Woli Nabycia, Kalkulator zdolności kredytowej, Protokół Martwej Oferty. Co miesiąc drobne usprawnienia.</p></details>
+      <details class="reveal"><summary>Czy mogę zwrócić zakup?</summary><p>Konsumenci mają 14 dni na odstąpienie, chyba że wyraźnie zgodzą się na natychmiastowy dostęp (wtedy tracą prawo zwrotu). Przedsiębiorcy (CEIDG, sp. z o.o.) nie mają prawa odstąpienia. Szczegóły w Regulaminie. Jeśli masz wątpliwości, umów Zoom przed zakupem — to nic nie kosztuje.</p></details>
+      <details class="reveal"><summary>Pracuję w agencji, czy licencja obejmuje zespół?</summary><p>Nie. Licencja jest imienna (1 osoba, 2 urządzenia). Dla biur 3–10 agentów mamy osobne pakiety — napisz na <a href="/cdn-cgi/l/email-protection#573a32392338253e3930173a32392338253e393036303239233679273b"><span class="__cf_email__" data-cfemail="4b262e253f243922252c0b262e253f243922252c2a2c2e253f2a653b27">[email&#160;protected]</span></a>, przygotujemy ofertę.</p></details>
+      <details class="reveal"><summary>Co zamiast aplikacji, jeśli chcę pracę 1:1?</summary><p>Wtedy Program Mentoringowy 60-dniowy z Wioletą i Marcinem Dutkiewicz. 16 sesji 1:1, codzienny WhatsApp, plan 12 miesięcy, marka osobista. 9 000 zł. Aplikacja w cenie. <a href="https://www.mentoringagenta.pl/mentoring.html">Zobacz program mentoringowy →</a></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Zanim zdecydujesz</div>
+      <h2>Obejrzyj jak to działa <em>na Twoich danych</em></h2>
+      <p class="mut" style="max-width:640px; margin:0 auto; font-size:17px;">30 minut. Zoom lub Teams. Wpisujesz dane klienta ze swojego rynku, AI pracuje na żywo. Bez zakupu, bez presji.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://www.mentoringagenta.pl/zoom_formularz.html">Rezerwuję demo, 30 min bezpłatnie →</a>
+        <a class="btn ghost" href="https://www.mentoringagenta.pl/formularz.html">Kupuję za 1 500 zł, teraz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <a class="brand" href="#top"><img class="navlogo" src="logo-ma.png" alt="Mentoring Agenta"> <span>Mentoring&nbsp;<i>Agenta</i></span></a>
+      <div class="foot-links">
+        <a href="https://www.mentoringagenta.pl/mentoring.html">Mentoring 1:1</a>
+        <a href="https://sklepheksagon.pl/produkt/ksiazka-mentoring-agenta-marcin/">Książka</a>
+        <a href="#faq">FAQ</a>
+        <a href="/regulamin.html">Regulamin</a> · <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
+      </div>
+    </div>
+    <div class="foot-legal">© 2026 Marcin Dutkiewicz · NIP 6431619322 · REGON 241475950 · ul. Sarenek 39H, 43-215 Studzienice · Operator płatności: Przelewy24 (PayPro S.A.) · Płatności: Przelewy24, BLIK, Visa, Mastercard · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e434b405a415c4740496e434b405a415c4740494f494b405a4f005e42">[email&#160;protected]</a></div>
+  </div>
+</footer>
+
+<!-- sticky CTA na telefon -->
+<div class="mbar">
+  <a class="demo" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo 30 min</a>
+  <a class="buy" href="https://www.mentoringagenta.pl/formularz.html">Kupuję · 1 500 zł</a>
+</div>
+
+<!-- ============ THREE.JS · JEDNA KULA (zoptymalizowana) ============ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  if(!window.THREE){return;}
+  // szanujemy prefers-reduced-motion: bez animacji 3D
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var c0=document.getElementById('bg3d'); if(c0)c0.style.display='none'; return;
+  }
+  var canvas=document.getElementById('bg3d');
+  var renderer=new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:false, powerPreference:'low-power'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.z=7;
+
+  // miekka radialna tekstura punktu
+  function dotTex(){
+    var c=document.createElement('canvas'); c.width=c.height=64;
+    var g=c.getContext('2d');
+    var gr=g.createRadialGradient(32,32,0,32,32,32);
+    gr.addColorStop(0,'rgba(255,246,214,1)');
+    gr.addColorStop(0.35,'rgba(242,212,137,0.85)');
+    gr.addColorStop(1,'rgba(184,134,11,0)');
+    g.fillStyle=gr; g.fillRect(0,0,64,64);
+    var t=new THREE.Texture(c); t.needsUpdate=true; return t;
+  }
+
+  // mniej punktow (perf), za to wieksze i jasniejsze (widocznosc)
+  var N = window.innerWidth<820 ? 1400 : 2200;
+  var base=new Float32Array(N*3);   // sfera bazowa (fibonacci)
+  var ph=new Float32Array(N);       // faza szumu
+  var fac=new Float32Array(N);      // wsp. bloom
+  var R=2.0;
+  for(var i=0;i<N;i++){
+    var y=1-(i/(N-1))*2;
+    var rad=Math.sqrt(Math.max(0,1-y*y));
+    var th=Math.PI*(3-Math.sqrt(5))*i;
+    base[i*3]=Math.cos(th)*rad*R;
+    base[i*3+1]=y*R;
+    base[i*3+2]=Math.sin(th)*rad*R;
+    ph[i]=Math.random()*Math.PI*2;
+    fac[i]=0.5+Math.random()*0.9;
+  }
+  var pos=new Float32Array(base);
+  // kolory per-punkt (mienienie pod kursorem)
+  var BASE_R=0.949, BASE_G=0.831, BASE_B=0.537; // #f2d489
+  var col=new Float32Array(N*3);
+  for(var k=0;k<N;k++){ col[k*3]=BASE_R; col[k*3+1]=BASE_G; col[k*3+2]=BASE_B; }
+  var geo=new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color', new THREE.BufferAttribute(col,3));
+  var mat=new THREE.PointsMaterial({
+    size:0.075, map:dotTex(), transparent:true, opacity:0.95,
+    blending:THREE.AdditiveBlending, depthWrite:false,
+    vertexColors:true
+  });
+  var pts=new THREE.Points(geo,mat);
+  scene.add(pts);
+
+  // interakcja + budzenie/usypianie
+  var hv=0;                 // aktywnosc (mysz/scroll)
+  var mouse={x:0,y:0,active:false};
+  var mtime=0;
+  var lastActive=performance.now();
+  var IDLE=3000;            // krecenie: scroll + ~3s po
+  var FADE=900;             // lagodne wygaszenie ruchu
+
+  function bump(){ hv=Math.min(1, hv+0.35); lastActive=performance.now(); }
+  window.addEventListener('mousemove',function(e){
+    mouse.x=(e.clientX/window.innerWidth)*2-1;
+    mouse.y=-(e.clientY/window.innerHeight)*2+1;
+    mouse.active=true; bump();
+  },{passive:true});
+  window.addEventListener('mouseout',function(){mouse.active=false;});
+  window.addEventListener('scroll',bump,{passive:true});
+  window.addEventListener('wheel',bump,{passive:true});
+  window.addEventListener('touchmove',bump,{passive:true});
+
+  var ray=new THREE.Raycaster();
+  var v=new THREE.Vector3();
+
+  function resize(){
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    bump();
+  }
+  window.addEventListener('resize',resize); resize();
+
+  function loop(){
+    requestAnimationFrame(loop);
+    var now=performance.now();
+    var idle=now-lastActive;
+    // pelny sen: zero obliczen i zero renderu, gdy nic sie nie dzieje
+    if(idle > IDLE+FADE) return;
+    // act: 1 podczas scrolla, plynnie do 0 przez FADE ms po
+    var act = idle<IDLE ? 1 : 1-(idle-IDLE)/FADE;
+
+    var _sc=window.pageYOffset||document.documentElement.scrollTop||0;
+    var docH=Math.max(1,(document.documentElement.scrollHeight-window.innerHeight));
+    var p=Math.min(1,_sc/docH);           // postep scrolla 0..1
+
+    hv*=0.95;                              // aktywnosc maleje
+    mtime += (0.006 + 0.012*hv)*act;
+    var _t=mtime;
+    // ROTACJA: tylko przy aktywnosci (scroll + kilka sekund po), wyrazniejsza
+    pts.rotation.y += (0.0022 + 0.0040*hv)*act;
+
+    // hero: kula lekko w prawo, potem na srodek
+    var _xoff = 0.7*Math.max(0,1-_sc/400);
+    pts.position.x += (_xoff-pts.position.x)*0.04;
+    pts.position.y += (0-pts.position.y)*0.04;
+
+    // WIELKOSC: rosnie na scroll, zawsze okragla (bez eksplozji)
+    var _S = 1 + 1.8*Math.sin(p*Math.PI);
+    var _heroW = Math.max(0,1-_sc/260);    // interakcja tylko na gorze
+
+    // mysz -> punkt na plaszczyznie kuli (lokalne wspolrzedne)
+    var _hm=false, mx=0,my=0;
+    if(mouse.active && _heroW>0.02){
+      v.set(mouse.x,mouse.y,0.5).unproject(camera);
+      var dir=v.sub(camera.position).normalize();
+      var dist=(0-camera.position.z)/dir.z;
+      var wp=camera.position.clone().add(dir.multiplyScalar(dist));
+      mx=(wp.x-pts.position.x)/_S; my=(wp.y-pts.position.y)/_S;
+      _hm=true;
+    }
+    var coreR=1.7;                          // zasieg odpychania
+    var arr=geo.attributes.position.array;
+    for(var j=0;j<N;j++){
+      var bx=base[j*3], by=base[j*3+1], bz=base[j*3+2];
+      // subtelny oddech, kula pozostaje kula
+      var br=1 + Math.sin(_t*0.7+ph[j])*0.015;
+      var sx=bx*br, sy=by*br, sz=bz*br;
+      // LOKALNE odpychanie + mienienie tylko wokol kursora
+      var tr=BASE_R, tg=BASE_G, tb=BASE_B;
+      if(_hm){
+        var dx=sx-mx, dy=sy-my;
+        var d=Math.sqrt(dx*dx+dy*dy)+0.0001;
+        if(d<coreR){
+          var f=(coreR-d)/coreR; f=f*f*0.95*_heroW*fac[j];
+          sx+=dx/d*f; sy+=dy/d*f; sz+=f*0.45;   // lekki wypych w 3D
+          // MIENIENIE: rozjasnienie + migotanie w miejscu kursora
+          var g=(coreR-d)/coreR;
+          var tw=0.55+0.45*Math.sin(_t*9+ph[j]*7);  // kazdy punkt migocze inaczej
+          var glow=g*g*tw*_heroW;
+          tr=BASE_R+(1.00-BASE_R)*glow;
+          tg=BASE_G+(0.97-BASE_G)*glow;
+          tb=BASE_B+(0.88-BASE_B)*glow;
+        }
+      }
+      // plynne dojscie/wygaszenie koloru
+      col[j*3]  +=(tr-col[j*3])*0.25;
+      col[j*3+1]+=(tg-col[j*3+1])*0.25;
+      col[j*3+2]+=(tb-col[j*3+2])*0.25;
+      // cel w przestrzeni sceny
+      var tx=sx*_S, ty=sy*_S, tz=sz*_S;
+      // plynny powrot/rozsuwanie (springy) -> dots reassemble smoothly
+      arr[j*3]   += (tx-arr[j*3])*0.16;
+      arr[j*3+1] += (ty-arr[j*3+1])*0.16;
+      arr[j*3+2] += (tz-arr[j*3+2])*0.16;
+    }
+    geo.attributes.position.needsUpdate=true;
+    geo.attributes.color.needsUpdate=true;
+    mat.size = 0.072 + p*0.014;
+    mat.opacity = 0.95;
+    renderer.render(scene,camera);
+  }
+  loop();
+})();
+</script>
+
+<!-- ============ REVEAL · IntersectionObserver (lzejszy: bez blur, jednorazowy) ============ -->
+<script>
+(function(){
+  var E='cubic-bezier(.22,.61,.36,1)';
+  function prep(e){
+    e.style.transition='opacity .7s '+E+', transform .7s '+E;
+    e.style.opacity=0; e.style.transform='translateY(34px)';
+  }
+  function show(e){ e.style.opacity=1; e.style.transform='none'; }
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  reveals.forEach(prep);
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(x){
+      if(x.isIntersecting){
+        show(x.target);
+        io.unobserve(x.target); // jednorazowo -> brak ciaglej pracy przy scrollu
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -9% 0px'});
+  reveals.forEach(function(e){ io.observe(e); });
+})();
+</script>
+
+<!-- ============ PREMIUM: progress, nav, liczniki (throttling przez rAF) ============ -->
+<script>
+(function(){
+  var prog=document.getElementById('progress');
+  var navEl=document.querySelector('nav');
+  var links=[].slice.call(document.querySelectorAll('.nav-links a.link'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function update(){
+    var sc=window.pageYOffset||document.documentElement.scrollTop||0;
+    var h=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    if(prog) prog.style.width=(sc/h*100)+'%';
+    if(navEl) navEl.classList.toggle('scrolled', sc>40);
+    var cur=-1;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i] && secs[i].getBoundingClientRect().top<=120) cur=i;
+    }
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+  }
+  var ticking=false;
+  function onScroll(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(function(){ update(); ticking=false; });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll); update();
+
+  // liczniki
+  function animateNum(el){
+    var raw=el.textContent.trim();
+    var m=raw.match(/^(\d[\d\s]*)(.*)$/);
+    if(!m){return;}
+    var target=parseInt(m[1].replace(/\s/g,''),10);
+    var suffix=m[2]||'';
+    var dur=1400, t0=null;
+    function step(t){
+      if(!t0)t0=t; var p=Math.min(1,(t-t0)/dur);
+      var e=1-Math.pow(1-p,3);
+      var val=Math.round(target*e);
+      el.textContent=(target>=1000? val : val)+suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statWrap=document.querySelector('.stats');
+  if(statWrap){
+    var done=false;
+    new IntersectionObserver(function(es){
+      es.forEach(function(x){
+        if(x.isIntersecting && !done){
+          done=true;
+          [].slice.call(statWrap.querySelectorAll('.n')).forEach(animateNum);
+        }
+      });
+    },{threshold:0.4}).observe(statWrap);
+  }
+})();
+</script>
+
+<!-- ============ WIDŻET ASYSTENTA (dopięty na końcu) ============ -->
+<script src="https://www.mentoringagenta.pl/mwidget.php?v=1" defer></script>
+<script>
+/* Na mobile (<=820px) pasek .mbar zajmuje dół ekranu — podnosimy widżet asystenta nad niego */
+(function(){
+  var MBAR_H = 84; /* wysokość paska + margines */
+  function liftWidget(){
+    if (window.innerWidth > 820) return;
+    var els = document.body.children;
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.classList && el.classList.contains('mbar')) continue;
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+      var cs = getComputedStyle(el);
+      if (cs.position === 'fixed') {
+        var b = parseFloat(cs.bottom);
+        if (!isNaN(b) && b >= 0 && b < MBAR_H) {
+          el.style.bottom = (b + MBAR_H) + 'px';
+        }
+      }
+    }
+  }
+  /* widżet wstrzykuje się asynchronicznie — obserwujemy body */
+  var mo = new MutationObserver(function(){ liftWidget(); });
+  mo.observe(document.body, {childList:true});
+  window.addEventListener('load', liftWidget);
+  window.addEventListener('resize', liftWidget);
+})();
+</script>
+</body>
+
+<style id="app-skin">
+/* ═══ SKIN: landing wygląda jak pulpit aplikacji ═══ */
+html{scroll-behavior:smooth;}
+body{background:#f3f4f6 !important;color:#111827 !important;font-family:Inter,-apple-system,sans-serif !important;}
+#bg3d{display:none !important;}
+/* NAV = topbar aplikacji */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:#ffffff;border-bottom:1px solid #e5e7eb !important;height:56px;backdrop-filter:none !important;}
+.nav-in{max-width:1280px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
+.brand span{color:#111827 !important;font-weight:800;}
+.brand i{color:#2563eb !important;font-style:normal;}
+.navlogo{width:30px;height:30px;}
+.nav-links .link{color:#374151 !important;font-size:13.5px;font-weight:600;padding:6px 10px;border-radius:8px;}
+.nav-links .link:hover{background:#f3f4f6;color:#2563eb !important;}
+.nav-links .btn.sm{background:#2563eb !important;color:#fff !important;border:none;border-radius:9px;padding:9px 16px;font-weight:700;}
+/* HERO = jasny, duży tytuł czarny, akcent niebieski */
+.hero{background:#f3f4f6 !important;padding:120px 20px 60px !important;}
+.hero h1{color:#111827 !important;}
+.hero h1 em{color:#2563eb !important;font-style:normal;}
+.hero .sub{color:#374151 !important;}
+.hero .eyebrow{color:#2563eb !important;letter-spacing:.1em;}
+/* SEKCJE: jasne, karty białe */
+section{background:#f3f4f6 !important;color:#111827 !important;}
+section:nth-of-type(even){background:#e9ecef !important;}
+.sec-head .eyebrow{color:#2563eb !important;}
+h1,h2,h3{color:#111827 !important;}
+h2 em{color:#2563eb !important;font-style:normal;}
+.card{background:#ffffff !important;border:1px solid #e5e7eb !important;box-shadow:0 1px 3px rgba(0,0,0,.06) !important;color:#111827 !important;}
+.card h3{color:#111827 !important;}
+.card p{color:#374151 !important;}
+.mut{color:#6b7280 !important;}
+b, strong{color:#111827 !important;}
+/* przyciski */
+.btn{background:#2563eb !important;color:#fff !important;border-radius:11px !important;font-weight:700 !important;border:none !important;box-shadow:0 4px 14px rgba(37,99,235,.25) !important;}
+.btn:hover{background:#1d4ed8 !important;}
+.btn.sm{padding:8px 14px !important;}
+.btn-sec, .btn.ghost, .btn.outline{background:#fff !important;color:#111827 !important;border:1px solid #e5e7eb !important;box-shadow:none !important;}
+/* gold → niebieski */
+:root{--gold:#2563eb !important;--gold2:#2563eb !important;--txt:#111827 !important;--mut:#6b7280 !important;}
+/* timeline, stats, feat */
+.timeline .step, .feat, .stat-card{background:#ffffff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+.feat b{color:#111827 !important;}
+.feat span{color:#6b7280 !important;}
+/* shot-frame: jasna rama z kropkami */
+.shot-frame{background:#fff !important;border:1px solid #e5e7eb !important;box-shadow:0 8px 24px rgba(0,0,0,.1) !important;}
+.shot-frame:before{background:#fff !important;background-image:radial-gradient(circle 3px at 14px 13px,#ff5f57 3px,transparent 3.5px),radial-gradient(circle 3px at 28px 13px,#febc2e 3px,transparent 3.5px),radial-gradient(circle 3px at 42px 13px,#28c840 3px,transparent 3.5px) !important;}
+.shot figcaption b{color:#111827 !important;}
+.shot figcaption span{color:#6b7280 !important;}
+/* ceny / badge'e */
+.badge{background:#2563eb !important;color:#fff !important;}
+/* FAQ / tabela */
+.faq-item, table, th, td{background:#ffffff !important;color:#111827 !important;border-color:#e5e7eb !important;}
+th{color:#6b7280 !important;}
+/* footer */
+footer{background:#111827 !important;color:#e5e7eb !important;}
+/* progress bar */
+#progress{background:#2563eb !important;}
+/* cena przekreślona */
+.price-old{color:#9ca3af !important;}
+/* form / inputy (jeśli są) */
+input,textarea,select{background:#fff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+</style>
+
+
+<style id="app-skin-2">
+/* chips = pigułki jak w aplikacji */
+.chips .chip{background:#fff !important;color:#2563eb !important;border:1px solid #e5e7eb !important;border-radius:20px !important;padding:7px 14px !important;font-size:12.5px !important;font-weight:600 !important;box-shadow:0 1px 2px rgba(0,0,0,.05) !important;}
+/* logo hero — ciemny kwadrat jak w aplikacji */
+.logo-hero{background:transparent !important;}
+.herologo{width:84px;height:84px;}
+.word{color:#111827 !important;}
+.word .m{color:#111827 !important;}
+.word .a{color:#2563eb !important;}
+/* reveal animacje — nie blokuj widoczności */
+.reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+/* eyebrow - małe etykiety */
+.eyebrow{color:#2563eb !important;font-weight:700 !important;letter-spacing:.14em !important;}
+/* sekcje z ciemnym tłem w oryginale (np. cena?) — wymuś jasne */
+#app,#mechanizm,#demo,#cena,#onas,#faq{background:#f3f4f6 !important;}
+/* hr / separatory */
+hr{border-color:#e5e7eb !important;}
+/* gold text klasy (np. cena) */
+.gold, .gold2, [style*="gold"]{color:#2563eb !important;}
+/* dark cards z features (na landing były ciemne) */
+.feat-grid .feat{background:#fff !important;border:1px solid #e5e7eb !important;}
+/* meta kafelki hero */
+.hero-meta-item{color:#374151 !important;}
+.hero-meta-dot{background:#2563eb !important;}
+/* tabelka cena: przekreślona 2500 */
+del{color:#9ca3af !important;}
+/* liczby statystyk */
+.stat-value, .num{color:#2563eb !important;}
+/* przyciski ghost w hero */
+.hero-cta .ghost{background:#fff !important;color:#111827 !important;border:1px solid #e5e7eb !important;box-shadow:none !important;}
+</style>
+
+
+<style id="app-skin-3">
+/* Dla kogo — jasne karty */
+.filter{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.filter .col{background:#ffffff !important;border:1px solid #e5e7eb !important;border-radius:14px;padding:20px;color:#111827 !important;}
+.filter .col.yes{border-top:3px solid #16a34a !important;}
+.filter .col.no{border-top:3px solid #dc2626 !important;}
+.filter .col h4{color:#111827 !important;}
+.filter .col li{color:#374151 !important;}
+/* meta tabs (demo minuty) — jasne */
+.demo-tab, .dmeta{background:#fff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+/* timeline onboarding */
+.timeline .tl-card, .step{background:#fff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+/* sekcja cena — jasny panel */
+.price-panel, .pricing{background:#fff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+/* awatary ludzie */
+.person, .team{background:#fff !important;color:#111827 !important;}
+/* butto sekond */
+.btn-sec{background:#fff !important;color:#111827 !important;border:1px solid #e5e7eb !important;}
+/* wszystkie pozostałe ciemne tła inline → jasne (wymuszenie) */
+div[style*="#0b1730"], div[style*="#0f1115"], section[style*="#0b1730"]{background:#fff !important;color:#111827 !important;}
+</style>
+
+
+<style id="app-skin-4">
+/* TIMELINE — jasne karty, ciemny tekst */
+.timeline .tl-item, .timeline .step, .timeline > div,
+section#mechanizm .timeline > div > div,
+#mechanizm .timeline > *{background:#ffffff !important;border:1px solid #e5e7eb !important;color:#111827 !important;}
+#mechanizm h3, #mechanizm h4, #mechanizm b{color:#111827 !important;}
+#mechanizm p, #mechanizm span, #mechanizm li{color:#374151 !important;}
+/* etykieta "Dzień 1-3" — niebieska, mocna */
+#mechanizm .tl-label, #mechanizm .lbl, .timeline .lbl, .timeline .tag{color:#2563eb !important;font-weight:800 !important;}
+/* teksty w ciemnych kartach — inline */
+#mechanizm div[style]{color:#111827 !important;}
+#mechanizm *{color:#111827;}
+#mechanizm .mut{color:#6b7280 !important;}
+/* ogólnie: wszystko co jest w ciemnym panelu → jasne */
+.panel-dark, .dark-card{background:#fff !important;color:#111827 !important;}
+/* uniwersalny przymus jasności dla sectionów które zostały ciemne */
+section div[style*="#0b1730"], section div[style*="#14171f"], section div[style*="#1a1d25"]{
+  background:#ffffff !important;color:#111827 !important;
+  border-color:#e5e7eb !important;
+}
+section div[style*="#0b1730"] *, section div[style*="#14171f"] *, section div[style*="#1a1d25"] *{
+  color:#111827 !important;
+}
+section div[style*="#0b1730"] .mut, section div[style*="#14171f"] .mut{color:#6b7280 !important;}
+/* złote etykiety → niebieskie */
+.gold-txt, [class*="gold"]{color:#2563eb !important;}
+</style>
+
+
+<style id="app-skin-5">
+/* Schemat — karty etapów jasne */
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.stage{background:#ffffff !important;border:1px solid #e5e7eb !important;border-radius:14px !important;padding:20px !important;color:#111827 !important;}
+.stage .st{color:#2563eb !important;font-weight:800 !important;font-size:11px !important;letter-spacing:.14em !important;text-transform:uppercase !important;}
+.stage h4{color:#111827 !important;font-size:18px !important;margin:6px 0 12px !important;}
+.stage ul{margin:0 !important;padding:0 !important;list-style:none !important;}
+.stage li{color:#374151 !important;font-size:13px !important;padding:3px 0 !important;position:relative;padding-left:14px !important;}
+.stage li:before{content:'•';position:absolute;left:0;color:#2563eb !important;}
+/* zabezpieczenie: wszelkie ciemne tła inline w sectionach → jasne */
+section [style*="background:#0b1730"], section [style*="background:#14171f"]{
+  background:#ffffff !important;color:#111827 !important;
+}
+/* AI Coach box — już jasny, OK */
+</style>
+
+
+<style id="app-skin-6">
+/* FAQ — jasne akordeony */
+details{background:#ffffff !important;border:1px solid #e5e7eb !important;border-radius:12px !important;color:#111827 !important;margin-bottom:10px;}
+details summary{color:#111827 !important;font-weight:600 !important;padding:16px 18px !important;font-size:14.5px !important;cursor:pointer;}
+details[open] summary{color:#2563eb !important;}
+details p, details div{color:#374151 !important;}
+details + details{margin-top:0;}
+/* reszta ciemnych elementów — przymus jasności (uniwersalny) */
+summary, details summary{color:#111827 !important;}
+/* karta cena — jasna */
+#app .section, #cena .section, #demo .section{background:#ffffff !important;color:#111827 !important;}
+/* ludzie — jasne (już są) */
+/* newsletter/kontakt */
+.contact, .contact-card{background:#fff !important;color:#111827 !important;}
+/* chat widget */
+.chat-panel, .bot{background:#fff !important;color:#111827 !important;}
+/* toast/progress */
+#progress{background:#2563eb !important;}
+/* gold gradient text (np. tytuły) → niebieski gdzie klasa gold */
+.gold, .gold2{color:#2563eb !important;}
+/* hero logo ramka: zostaw złotą (marka), ale tło jasne */
+.logo-hero{filter:none !important;}
+/* ewentualne pozostałe ciemne elementy klasowe */
+[class*="dark"], .panel, .panel-dark{background:#ffffff !important;color:#111827 !important;}
+/* finalny przymus: cokolwiek z ciemnym kolorem tła inline w sekcjach → jasne */
+section *, footer *{box-shadow:none !important;}
+footer{background:#111827 !important;}
+</style>
+
+</html>
