@@ -1,0 +1,35 @@
+name: Deploy root (landing) przez FTP (po pushu na main)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'site/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wgraj zmienione pliki na serwer (home.pl, root domeny)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: site/
+          server-dir: /
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/_audit_*
+            **/*.png
+
+      - name: Weryfikacja na żywo
+        run: |
+          sleep 3
+          code=$(curl -s -o /dev/null -w "%{http_code}" "https://mentoringagenta.pl/")
+          echo "HTTP landing: $code"
+          if [ "$code" != "200" ]; then echo "::error::Landing nie odpowiada 200"; exit 1; fi
