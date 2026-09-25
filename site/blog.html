@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dlaczego nasza Analiza CMA nie zgaduje cen | Blog · Mentoring Agenta</title>
 <meta name="description" content="Jak Analiza CMA w Mentoring Agenta liczy cenę z żywych ofert: dwie niezależne ścieżki wyszukiwania (Perplexity + Claude), mediana z realnych ogłoszeń, bezpiecznik liczb i czerwony baner, gdy danych brak.">
-<meta name="theme-color" content="#060d1c">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#f3f4f6">
 <link rel="icon" type="image/png" href="logo-ma.png?v=2">
 <meta property="og:title" content="Dlaczego nasza Analiza CMA nie zgaduje cen">
 <meta property="og:description" content="10 realnych ofert, mediana 2 767 zł/m², przedział wyceny wyliczony, nie wymyślony. Zobacz, jak działa Analiza CMA na żywych danych.">
@@ -17,56 +16,53 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#060d1c; --bg2:#081124; --panel:#0b1730; --card:rgba(10,20,40,.88); --line:rgba(230,200,130,.15); --txt:#eef2fb; --mut:#9fb0c9; --gold:#c99a3a; --gold2:#f2d489; --goldgrad:linear-gradient(110deg,#b8860b 0%,#f2d489 52%,#c99a3a 100%); --ok:#8fd6a0; --warn:#e6b45a; --r-card:20px; --r-btn:14px; --shadow-card:0 24px 60px rgba(0,0,0,.55); --shadow-btn:0 14px 40px rgba(201,154,58,.42); }
+:root{ --navy:#16284a; --navy2:#0f1c38; --txt:#111827; --mut:#6b7280; --bg:#f3f4f6; --card:#ffffff; --line:#e5e7eb; }
 *{margin:0; padding:0; box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{ font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--txt); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body{ font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--txt); line-height:1.7; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 a{color:inherit; text-decoration:none;}
-.wrap{max-width:1180px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
-nav{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(6,13,28,.78); border-bottom:1px solid var(--line); }
-.nav-in{display:flex; align-items:center; justify-content:space-between; height:66px;}
-.brand{display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700;}
-.brand i{color:var(--gold2); font-style:italic;}
-.navlogo{width:42px; height:42px; display:block; object-fit:contain; filter:drop-shadow(0 6px 18px rgba(22,40,74,.25));}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+nav{ position:sticky; top:0; z-index:50; background:#ffffff; border-bottom:1px solid var(--line); }
+.nav-in{display:flex; align-items:center; justify-content:space-between; height:66px; flex-wrap:wrap;}
+.brand{display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:var(--navy);}
+.brand i{color:var(--navy); font-style:italic;}
+.navlogo{width:42px; height:42px; display:block; object-fit:contain;}
 .nav-links{display:flex; align-items:center; gap:26px; font-size:15px;}
-.link{color:var(--mut); transition:color .2s;}
-.link:hover{color:var(--txt);}
-.btn{ display:inline-flex; align-items:center; gap:8px; justify-content:center; background:var(--goldgrad); color:#060d1c; font-weight:800; font-size:15px; padding:13px 22px; border-radius:var(--r-btn); border:none; cursor:pointer; box-shadow:var(--shadow-btn); transition:transform .25s var(--ease, ease); }
-.btn:hover{transform:translateY(-2px);}
-.btn.sm{padding:10px 16px; font-size:14px;}
-/* ── ARTYKUŁ ── */
-.hero{padding:72px 0 30px; text-align:center;}
-.eyebrow{display:inline-block; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--gold2); font-weight:700; margin-bottom:18px;}
-h1{font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5vw,52px); line-height:1.15; font-weight:700; max-width:840px; margin:0 auto;}
-.sub{color:var(--mut); font-size:17px; max-width:680px; margin:18px auto 0;}
-.meta{display:flex; gap:16px; justify-content:center; margin-top:22px; font-size:13px; color:var(--mut); flex-wrap:wrap;}
-.meta b{color:var(--gold2);}
-article{max-width:720px; margin:46px auto 0; padding:0 24px;}
-article p{color:var(--txt); font-size:16.5px; margin-bottom:20px;}
-article h2{font-family:'Cormorant Garamond',serif; font-size:29px; line-height:1.25; margin:44px 0 14px; color:var(--gold2);}
-article h3{font-size:17px; font-weight:800; margin:26px 0 8px;}
-article ul{margin:0 0 20px 20px; color:var(--txt); font-size:16px;}
-article li{margin-bottom:8px;}
-article strong{color:var(--gold2); font-weight:700;}
-.callout{background:var(--panel); border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:14px; padding:18px 22px; margin:26px 0; font-size:15.5px; color:var(--mut);}
-.callout b{color:var(--txt);}
-.num{display:flex; gap:14px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:var(--r-card); padding:18px 20px; margin-bottom:12px; box-shadow:var(--shadow-card);}
-.num .n{flex-shrink:0; width:34px; height:34px; border-radius:10px; background:var(--goldgrad); color:#060d1c; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:15px;}
-.num .t{font-size:15px; color:var(--mut);}
-.num .t b{color:var(--txt); display:block; margin-bottom:2px;}
-.stat{display:flex; gap:14px; flex-wrap:wrap; margin:30px 0;}
-.stat > div{flex:1; min-width:150px; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px 18px; text-align:center;}
-.stat .v{font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--gold2);}
+.nav-links .link{color:#374151; transition:color .2s;}
+.nav-links .link:hover{color:var(--navy);}
+.btn{ display:inline-flex; align-items:center; gap:8px; justify-content:center; background:var(--navy); color:#fff; font-weight:700; font-size:15px; padding:10px 18px; border-radius:11px; border:none; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,.25); transition:background .2s; }
+.btn:hover{background:var(--navy2);}
+.hero{padding:64px 0 26px; text-align:center;}
+.eyebrow{display:inline-block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); font-weight:800; margin-bottom:16px;}
+h1{font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,50px); line-height:1.15; font-weight:700; max-width:840px; margin:0 auto; color:var(--txt);}
+.sub{color:#374151; font-size:17px; max-width:680px; margin:16px auto 0;}
+.meta{display:flex; gap:16px; justify-content:center; margin-top:20px; font-size:13px; color:var(--mut); flex-wrap:wrap;}
+.meta b{color:var(--navy);}
+article{max-width:720px; margin:40px auto 0; padding:0 24px 10px;}
+article p{color:#1f2937; font-size:16.5px; margin-bottom:20px;}
+article h2{font-family:'Cormorant Garamond',serif; font-size:30px; line-height:1.25; margin:42px 0 14px; color:var(--navy);}
+article strong{color:var(--navy); font-weight:700;}
+.stat{display:flex; gap:14px; flex-wrap:wrap; margin:28px 0;}
+.stat > div{flex:1; min-width:150px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.stat .v{font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:700; color:var(--navy);}
 .stat .k{font-size:12px; color:var(--mut); margin-top:3px;}
-.cta-box{background:linear-gradient(135deg,rgba(201,154,58,.14),rgba(201,154,58,.05)); border:1px solid var(--line); border-radius:var(--r-card); padding:30px; text-align:center; margin:50px 0 10px;}
-.cta-box h2{margin:0 0 8px;}
+.num{display:flex; gap:14px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.num .n{flex-shrink:0; width:34px; height:34px; border-radius:10px; background:var(--navy); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:15px;}
+.num .t{font-size:15px; color:#374151;}
+.num .t b{color:var(--txt); display:block; margin-bottom:2px;}
+.callout{background:#fff; border:1px solid var(--line); border-left:4px solid var(--navy); border-radius:14px; padding:18px 22px; margin:26px 0; font-size:15.5px; color:#374151;}
+.callout b{color:var(--txt);}
+.cta-box{background:#fff; border:1px solid var(--line); border-top:4px solid var(--navy); border-radius:16px; padding:30px; text-align:center; margin:46px 0 20px; box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.cta-box h2{margin:0 0 8px; color:var(--txt); font-size:22px;}
 .cta-box p{color:var(--mut); font-size:14.5px; margin-bottom:18px;}
-footer{border-top:1px solid var(--line); padding:56px 0 40px; margin-top:70px;}
+footer{background:#111827; color:#e5e7eb; padding:52px 0 36px; margin-top:60px;}
 .foot-in{display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:center;}
-.foot-links{display:flex; flex-wrap:wrap; gap:24px; font-size:14px; color:var(--mut);}
-.foot-links a:hover{color:var(--txt);}
-.foot-legal{font-size:13px; color:var(--mut); margin-top:26px; text-align:center;}
-@media (max-width:760px){ .nav-links .link{display:none;} .hero{padding:48px 0 20px;} }
+footer .brand{color:#e5e7eb;}
+.foot-links{display:flex; flex-wrap:wrap; gap:22px; font-size:14px; color:#9ca3af;}
+.foot-links a:hover{color:#e5e7eb;}
+.foot-legal{font-size:12.5px; color:#9ca3af; margin-top:24px; text-align:center;}
+@media (max-width:900px){ .nav-links{gap:16px; font-size:13.5px;} .nav-links .link:nth-child(2){display:none;} .nav-links .link:nth-child(3){display:none;} }
+@media (max-width:600px){ .hero{padding:40px 0 16px;} .nav-in{padding:10px 0;} .nav-links{gap:14px;} .nav-links .link:nth-child(4){display:none;} }
 </style>
 </head>
 <body id="top">
@@ -78,8 +74,8 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; margin-top:70px;}
       <a class="link" href="/#app">Aplikacja</a>
       <a class="link" href="/#mechanizm">Jak działa</a>
       <a class="link" href="/#cena">Cena</a>
-      <a class="link" href="/#faq">FAQ</a>
-      <a class="btn sm" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo bezpłatnie →</a>
+      <a class="link" href="/blog.html">Blog</a>
+      <a class="btn" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo bezpłatnie →</a>
     </div>
   </div>
 </nav>
@@ -115,7 +111,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; margin-top:70px;}
   <h2>Jak to bronić w rozmowie z właścicielem</h2>
   <p>Najtrudniejszy moment to „sąsiad chce 30% więcej”. Tu działa prosto: pokaż oferty. „Panie Marku, w promieniu 5 kilometrów wystawiono 4 domy. Oto ceny, oto metraże, oto jak długo wiszą. Pański dom, po korekcie za stan, wypada między 238 a 262 tysiącami. Wystawienie 10% wyżej to statystycznie plus 4 tygodnie na rynku i koszt noszenia”. To nie opinia, to tabela.</p>
 
-  <div class="callout"><b>Uczciwość to przewaga.</b> Większość narzędzi wyceni „na poczekaniu” i często trafia. Nasza różnica jest w tym, co robi, gdy <b>nie trafia</b>: pokazuje dane, pokazuje brak danych i pokazuje źródło każdej liczby. Klient, który widzi 10 ofert, negocjuje z Tobą, a nie przeciwko Tobie.</div>
+  <div class="callout"><b>Uczciwość to przewaga.</b> Większość narzędzi wycenia „na poczekaniu” i często trafia. Nasza różnica jest w tym, co robi, gdy <b>nie trafia</b>: pokazuje dane, pokazuje brak danych i pokazuje źródło każdej liczby. Klient, który widzi 10 ofert, negocjuje z Tobą, a nie przeciwko Tobie.</div>
 
   <p>Analiza CMA jest częścią aplikacji Mentoring Agenta, razem z panelem wydruku (wybierasz sekcje, edytujesz treść, drukujesz dla klienta) i kartą sprawy, która trzyma historię rozmów przy kliencie.</p>
 
@@ -134,7 +130,6 @@ footer{border-top:1px solid var(--line); padding:56px 0 40px; margin-top:70px;}
         <a href="https://www.mentoringagenta.pl/1na1/">Mentoring 1:1</a>
         <a href="https://sklepheksagon.pl/produkt/ksiazka-mentoring-agenta-marcin/">Książka</a>
         <a href="https://marcindutkiewicz.pl/akademia.html">Akademia AI po ludzku</a>
-        <a href="/#faq">FAQ</a>
         <a href="/regulamin.html">Regulamin</a> · <a href="/polityka-prywatnosci.html">Polityka prywatności</a>
       </div>
     </div>
