@@ -373,7 +373,8 @@ nav.scrolled .nav-in{height:56px;}
       <a class="link" href="#cena">Cena</a>
       <a class="link" href="#onas">O nas</a>
       <a class="link" href="/blog.html">Blog</a><a class="link" href="#faq">FAQ</a>
-      <a class="btn sm" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo bezpłatnie →</a>
+      <a class="link" href="https://mentoringagenta.pl/mentor/" title="Panel klienta AgentOS">Zaloguj się</a>
+        <a class="btn sm" href="https://www.mentoringagenta.pl/zoom_formularz.html">Demo bezpłatnie →</a>
     </div>
   </div>
 </nav>
@@ -681,7 +682,7 @@ nav.scrolled .nav-in{height:56px;}
     <div class="sec-head reveal">
       <div class="eyebrow">Aplikacja · Self-checkout · Cena wczesnego dostępu</div>
       <h2>Jednorazowo. <em>Bez abonamentu.</em></h2>
-      <p>Kupujesz raz. Dostęp bezterminowy. Aktualizacje w cenie przez 12 miesięcy. Licencja na 2 urządzenia jednocześnie (komputer + telefon).</p>
+      <p>Kupujesz raz. Dostęp bezterminowy. Aktualizacje w cenie przez 12 miesięcy. Licencja imienna: do 5 aktywacji, 2 urządzenia jednocześnie (np. komputer + telefon).</p>
     </div>
     <div class="card price-card reveal">
       <div class="price-alert">⏳ <span>Cena wzrośnie do 2 500 zł. Teraz wchodzisz za 1 500 zł, cena dla pierwszych użytkowników. Zmiana bez ostrzeżenia.</span></div>
@@ -741,11 +742,15 @@ nav.scrolled .nav-in{height:56px;}
     <div class="faq">
       <details class="reveal"><summary>Czy to kolejny kurs online?</summary><p>Nie. Kurs uczy. System operacyjny każdego dnia mówi Ci co zrobić. To narzędzie pracy, nie materiał do przerobienia wieczorem. Nie ma tu „lekcji 1–30". Są generatory, skrypty, kreatory i kalkulatory, których używasz w trakcie realnej pracy z klientem.</p></details>
       <details class="reveal"><summary>Dlaczego potrzebuję własnego klucza API Anthropic?</summary><p>Żebyś płacił tylko za to, czego faktycznie używasz, i żeby Twoje dane o klientach nie przechodziły przez nasze konto. Założenie klucza to 5 minut; rozliczasz użycie bezpośrednio u dostawcy AI (kupujesz kredyty w paczkach i odnawiasz, gdy się skończą). Krok po kroku w instrukcji.</p></details>
-      <details class="reveal"><summary>Czy dane moich klientów są bezpieczne?</summary><p>Wszystkie dane (notatki, listy klientów, szkice umów) zostają lokalnie w Twojej przeglądarce (localStorage). Sprzedawca ani nikt inny ich nie widzi. Do AI wysyłana jest tylko treść konkretnego zapytania, nigdy cała baza.</p></details>
+      <details class="reveal"><summary>Czy dane moich klientów są bezpieczne?</summary><p>Wszystkie dane (notatki, listy klientów, szkice umów) zostają lokalnie w Twojej przeglądarce (localStorage). Sprzedawca ani nikt inny ich nie widzi. Opcjonalnie możesz połączyć Google Drive, aby robić kopię i otwierać te same dane na drugim urządzeniu; bez połączenia wszystko działa dalej lokalnie, a aplikacja przypomina o zapisie. Do chmury trafia kopia Twoich danych (foldera „Mentoring Agenta”), nie Twoje klucze API. Do AI wysyłana jest tylko treść konkretnego zapytania, nigdy cała baza.</p></details>
+      <details>
+        <summary>Który klucz API jest mi potrzebny?</summary>
+        <p>Do podstawowej pracy (czat z Mentorem, generatory treści, SMS-y, opisy, umowy) wystarczy jeden klucz: Claude (Anthropic) albo OpenAI, albo Gemini (Google). Dodatkowo: wyszukiwanie aktualnych ofert w analizie CMA korzysta z Perplexity, a analiza zdjęcia rzutu i wizualizacja AI z rzutu potrzebują klucza Gemini lub OpenAI. Aplikacja pokaże Ci, czego brakuje dla danej funkcji, i poinformuje, gdy środki u dostawcy się skończą.</p>
+      </details>
       <details class="reveal"><summary>Co jeśli już używam innych narzędzi (CRM, kalkulatorów)?</summary><p>Aplikacja nie zastępuje CRM-a. Uzupełnia go tam, gdzie CRM-y są słabe: generowanie treści, scenariusze rozmów, protokoły operacyjne, analizy. Większość agentów używa równolegle.</p></details>
       <details class="reveal"><summary>Co dostaję w ramach aktualizacji 12 miesięcy?</summary><p>Nowe moduły, generatory, ulepszenia. Od wersji 1.0 (35 modułów) do 2.0 (52 moduły) dodaliśmy m.in.: Dzień Otwarty, Schemat Pracy Agenta z AI Coach, Symulator Rozmowy, Oświadczenie Woli Nabycia, Kalkulator zdolności kredytowej, Protokół Martwej Oferty. Co miesiąc drobne usprawnienia.</p></details>
       <details class="reveal"><summary>Czy mogę zwrócić zakup?</summary><p>Konsumenci mają 14 dni na odstąpienie, chyba że wyraźnie zgodzą się na natychmiastowy dostęp (wtedy tracą prawo zwrotu). Przedsiębiorcy (CEIDG, sp. z o.o.) nie mają prawa odstąpienia. Szczegóły w Regulaminie. Jeśli masz wątpliwości, umów Zoom przed zakupem, to nic nie kosztuje.</p></details>
-      <details class="reveal"><summary>Pracuję w agencji, czy licencja obejmuje zespół?</summary><p>Nie. Licencja jest imienna (1 osoba, 2 urządzenia). Dla biur 3–10 agentów mamy osobne pakiety, napisz na <a href="/cdn-cgi/l/email-protection#573a32392338253e3930173a32392338253e393036303239233679273b"><span class="__cf_email__" data-cfemail="4b262e253f243922252c0b262e253f243922252c2a2c2e253f2a653b27">[email&#160;protected]</span></a>, przygotujemy ofertę.</p></details>
+      <details class="reveal"><summary>Pracuję w agencji, czy licencja obejmuje zespół?</summary><p>Nie. Licencja jest imienna (1 osoba: do 5 aktywacji, 2 urządzenia równocześnie). Dla biur 3–10 agentów mamy osobne pakiety, napisz na <a href="/cdn-cgi/l/email-protection#573a32392338253e3930173a32392338253e393036303239233679273b"><span class="__cf_email__" data-cfemail="4b262e253f243922252c0b262e253f243922252c2a2c2e253f2a653b27">[email&#160;protected]</span></a>, przygotujemy ofertę.</p></details>
       <details class="reveal"><summary>Co zamiast aplikacji, jeśli chcę pracę 1:1?</summary><p>Wtedy Program Mentoringowy 60-dniowy z Wioletą i Marcinem Dutkiewicz. 16 sesji 1:1, codzienny WhatsApp, plan 12 miesięcy, marka osobista. 9 000 zł. Aplikacja w cenie. <a href="https://mentoringagenta.pl/1na1/">Zapisz się na bezpłatną rozmowę o programie →</a></p></details>
     </div>
   </div>
