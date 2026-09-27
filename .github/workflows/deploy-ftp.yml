@@ -25,7 +25,6 @@ jobs:
           exclude: |
             **/.git*
             **/_audit_*
-            **/*.png
 
       - name: Weryfikacja na żywo
         run: |
