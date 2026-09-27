@@ -4,6 +4,8 @@
 // Zwraca {redirectUrl, paymentId}
 // KONFIGURACJA: skopiuj paynow_config.sample.php -> paynow_config.php i wpisz klucze z panelu Paynow.
 
+// Guard: czytelny komunikat zanim klucze Paynow zostaną dodane na serwerze
+if (!file_exists(__DIR__ . '/paynow_config.php')) { http_response_code(503); header('Content-Type: application/json; charset=utf-8'); echo json_encode(['error'=>'paynow_nieaktywny','info'=>'Płatności online są w przygotowaniu. Napisz na mentoring@mentoringagenta.pl']); exit; }
 require __DIR__ . '/paynow_config.php';
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: https://mentoringagenta.pl');
