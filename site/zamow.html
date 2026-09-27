@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kup licencję AgentOS — Mentoring Agenta</title>
+<meta name="robots" content="noindex">
+<style>body{font-family:Inter,Arial,sans-serif;background:#f7f8fd;color:#13213d;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+main{background:#fff;padding:36px;border-radius:18px;border:1px solid #e4e9f2;max-width:520px;width:100%}
+h1{letter-spacing:-.03em;font-size:26px} label{display:block;font-size:13px;margin:14px 0 4px;color:#45546d}
+input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #d7deea;border-radius:10px;font-size:15px}
+button{margin-top:22px;width:100%;background:#6044dc;color:#fff;border:0;border-radius:12px;padding:15px;font-size:16px;font-weight:700;cursor:pointer}
+button:disabled{opacity:.5} .m{font-size:13px;color:#45546d;margin-top:14px} #err{color:#c02626;font-size:14px;margin-top:12px;white-space:pre-wrap}
+.note{background:#f4f6fc;border-radius:10px;padding:12px;font-size:13px;color:#45546d;margin-top:16px}</style></head>
+<body><main>
+<h1>Licencja AgentOS — 1500 zł</h1>
+<p class="m">Jednorazowo, bez abonamentu. Płatność online (Przelewy24: BLIK, karta, przelew). Licencja i instrukcja startu przychodzą mailem od razu po zaksięgowaniu.</p>
+<label for="name">Imię i nazwisko / nazwa firmy *</label><input id="name" autocomplete="name">
+<label for="email">E-mail (na niego wyślemy licencję) *</label><input id="email" type="email" autocomplete="email">
+<label for="nip">NIP (opcjonalnie — faktura dla firmy)</label><input id="nip" inputmode="numeric">
+<label for="adres">Adres do faktury (opcjonalnie)</label><input id="adres" autocomplete="street-address">
+<div class="note">Kupując, akceptujesz <a href="/regulamin.html">regulamin</a> i <a href="/polityka-prywatnosci.html">politykę prywatności</a>. Konsumenci: 14 dni na zwrot — szczegóły w regulaminie.</div>
+<button id="go">Przejdź do płatności →</button>
+<div id="err"></div>
+<script>
+document.getElementById('go').onclick = async function(){
+  var b=this, e=document.getElementById('err'); e.textContent='';
+  var name=document.getElementById('name').value.trim(), email=document.getElementById('email').value.trim();
+  if(!name||!email){ e.textContent='Podaj imię i nazwisko oraz e-mail.'; return; }
+  b.disabled=true; b.textContent='Tworzę płatność...';
+  try{
+    var r=await fetch('/paynow_api.php',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({variant:'agentos',name:name,email:email,nip:document.getElementById('nip').value,adres:document.getElementById('adres').value,faktura:!!document.getElementById('nip').value||!!document.getElementById('adres').value})});
+    var j=await r.json();
+    if(j.redirectUrl){ location.href=j.redirectUrl; return; }
+    throw new Error(j.error||('HTTP '+r.status));
+  }catch(err){ e.textContent='Nie udało się rozpocząć płatności: '+err.message+'. Spróbuj ponownie lub napisz na mentoring@mentoringagenta.pl'; b.disabled=false; b.textContent='Przejdź do płatności →'; }
+};
+</script>
+</main></body></html>
