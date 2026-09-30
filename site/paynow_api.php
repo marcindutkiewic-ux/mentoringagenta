@@ -41,10 +41,11 @@ $amount = $VARIANTS[$variant]['amount'];
 $externalId = 'MA-' . date('Ymd-His') . '-' . substr(md5($email.$name), 0, 6);
 
 // Zapis zamówienia
-$ordersFile = __DIR__ . '/paynow-orders.json';
+$ordersFile = __DIR__ . '/paynow-orders.php'; // dane NEdo odczytu z sieci (prefiks php exit)
+$__ordsRead = file_exists($ordersFile) ? preg_replace('/^<\\?php exit; \\?>\\s*/', '', (string)file_get_contents($ordersFile)) : '';
 $orders = [];
 if (file_exists($ordersFile)) {
-    $decoded = json_decode((string)file_get_contents($ordersFile), true);
+    $decoded = json_decode($__ordsRead, true);
     if (is_array($decoded)) { $orders = $decoded; }
 }
 $orders[] = [
@@ -60,7 +61,7 @@ $orders[] = [
     'adres' => $adres,
     'faktura' => $faktura,
 ];
-@file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
+@file_put_contents($ordersFile, "<?php exit; ?>\n" . json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
 
 // Kontynuuj istniejącą płatność (nie twórz od nowa)
 foreach ($orders as $l) {
@@ -122,7 +123,7 @@ foreach ($orders as $i => $l) {
         $orders[$i]['redirectUrl'] = isset($j['redirectUrl']) ? $j['redirectUrl'] : '';
     }
 }
-file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
+file_put_contents($ordersFile, "<?php exit; ?>\n" . json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
 
 // Mail potwierdzenia (nie blokuje) — używa sprawdzonej wysyłki z marcindutkiewicz.pl
 $ctx = stream_context_create(['http'=>['method'=>'POST','header'=>"Content-Type: application/json\r\n",

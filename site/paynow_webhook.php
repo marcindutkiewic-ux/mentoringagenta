@@ -10,9 +10,10 @@ $calc = base64_encode(hash_hmac('sha256', $raw, PAYNOW_SIGNATURE_KEY, true));
 if (!hash_equals($calc, $sig)) { http_response_code(400); echo 'bad signature'; exit; }
 $j = json_decode($raw, true);
 $paymentId = $j['paymentId'] ?? ''; $status = $j['status'] ?? '';
-$ordersFile = __DIR__ . '/paynow-orders.json';
+$ordersFile = __DIR__ . '/paynow-orders.php';
+$__whRaw = file_exists($ordersFile) ? preg_replace('/^<\\?php exit; \\?>\\s*/', '', (string)file_get_contents($ordersFile)) : '';
 $orders = [];
-if (file_exists($ordersFile)) { $d = json_decode((string)file_get_contents($ordersFile), true); if (is_array($d)) $orders = $d; }
+if (file_exists($ordersFile)) { $d = json_decode($__whRaw, true); if (is_array($d)) $orders = $d; }
 foreach ($orders as $i => $o) {
     if (($o['paymentId'] ?? '') === $paymentId) {
         $orders[$i]['payStatus'] = $status;
@@ -25,5 +26,5 @@ foreach ($orders as $i => $o) {
         }
     }
 }
-@file_put_contents($ordersFile, json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
+@file_put_contents($ordersFile, "<?php exit; ?>\n" . json_encode($orders, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE), LOCK_EX);
 http_response_code(200); echo 'OK';
