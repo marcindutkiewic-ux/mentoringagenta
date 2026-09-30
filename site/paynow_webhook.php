@@ -1,7 +1,8 @@
 <?php
 // PAYNOW webhook — potwierdzenia płatności (mentoringagenta.pl)
 // Guard: czytelny komunikat zanim klucze Paynow zostaną dodane na serwerze
-if (!file_exists(__DIR__ . '/paynow_config.php')) { http_response_code(503); header('Content-Type: application/json; charset=utf-8'); echo json_encode(['error'=>'paynow_nieaktywny','info'=>'Płatności online są w przygotowaniu. Napisz na mentoring@mentoringagenta.pl']); exit; }
+if (!file_exists(__DIR__ . '/paynow_config.php')) { http_response_code(503); header('Content-Type: application/json; charset=utf-8'); echo json_encode(['error'=>'paynow_nieaktywny','info'=>'Płatności online są w przygotowaniu (brak pliku konfiguracji). Napisz na mentoring@mentoringagenta.pl']); exit; }
+if (strpos(@file_get_contents(__DIR__ . '/paynow_config.php'), 'TU_WKLEJ') !== false) { http_response_code(503); header('Content-Type: application/json; charset=utf-8'); echo json_encode(['error'=>'paynow_nieaktywny','info'=>'Płatności online są w przygotowaniu (klucze nie zostały jeszcze wklejone).']); exit; }
 require __DIR__ . '/paynow_config.php';
 $raw = file_get_contents('php://input');
 $sig = $_SERVER['HTTP_SIGNATURE'] ?? '';
